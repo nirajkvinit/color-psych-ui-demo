@@ -20,10 +20,18 @@ interface PaletteDefinition {
 
 type PaletteKey =
   | 'calm' | 'warm' | 'verdant' | 'lumina'
-  | 'navy' | 'slate' | 'charcoal' | 'terracotta' | 'honey' | 'cloud';
+  | 'navy' | 'slate' | 'charcoal' | 'terracotta' | 'honey' | 'cloud'
+  | 'transformative' | 'twilight' | 'oatmeal' | 'sagebrush' | 'arctic'
+  | 'copper' | 'apricot' | 'sandstone' | 'saffron' | 'rosewood';
 
-const COOL_PALETTES: PaletteKey[] = ['calm', 'verdant', 'navy', 'slate', 'cloud', 'honey'];
-const WARM_PALETTES: PaletteKey[] = ['warm', 'terracotta', 'charcoal'];
+const CALM_PALETTES: PaletteKey[] = [
+  'calm', 'verdant', 'lumina', 'navy', 'slate', 'cloud',
+  'transformative', 'twilight', 'oatmeal', 'sagebrush', 'arctic',
+];
+const WARM_PALETTES: PaletteKey[] = [
+  'warm', 'charcoal', 'terracotta', 'honey',
+  'copper', 'apricot', 'sandstone', 'saffron', 'rosewood',
+];
 
 interface UserRating {
   palette: PaletteKey;
@@ -343,6 +351,316 @@ const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-foreground': '#2a2820',
       '--accent-rgb': '139, 157, 195',
     }
+  },
+  transformative: {
+    name: "Transformative Teal",
+    psych: "WGSN & Coloro's 2026 Colour of the Year — a fluid fusion of dependable blue and aquatic green. Signals ecological responsibility, resilience, and calm redirection in an era of climate-conscious corporate decision-making.",
+    researchNote: "WGSN 2026: teal searches up 9% YoY. 98% of consumers say colour influences purchase decisions. Ideal for sustainability-forward enterprise SaaS.",
+    light: {
+      '--bg': '#f0f9f9',
+      '--surface': '#ffffff',
+      '--surface-2': '#e0f2f1',
+      '--text': '#0a3d3d',
+      '--text-muted': '#4a7c7c',
+      '--border': '#b2dfdb',
+      '--accent': '#0d6e6e',
+      '--accent-hover': '#0a5555',
+      '--accent-light': '#14a3a3',
+      '--accent-foreground': '#ffffff',
+      '--accent-rgb': '13, 110, 110',
+    },
+    dark: {
+      '--bg': '#0a2e2e',
+      '--surface': '#0d4a4a',
+      '--surface-2': '#0d6e6e',
+      '--text': '#e0f2f1',
+      '--text-muted': '#80cbc4',
+      '--border': '#14a3a3',
+      '--accent': '#4dd0e1',
+      '--accent-hover': '#26c6da',
+      '--accent-light': '#80deea',
+      '--accent-foreground': '#0a2e2e',
+      '--accent-rgb': '77, 208, 225',
+    }
+  },
+  twilight: {
+    name: "Digital Twilight",
+    psych: "Deep indigo and soft violet create fluid, adaptive sophistication for AI and agentic platforms. Familiar enough to feel trustworthy, distinctive enough to escape the 'corporate blue' commodity trap that affects 70%+ of SaaS brands.",
+    researchNote: "Tentackles 2026: Digital Twilight palette for agentic AI SaaS. Indigo #2C2A72 + violet #8C7AE6 signals system intelligence over static dashboards.",
+    light: {
+      '--bg': '#f5f4fa',
+      '--surface': '#ffffff',
+      '--surface-2': '#ede9f6',
+      '--text': '#1e1b4b',
+      '--text-muted': '#6366a0',
+      '--border': '#c7c3e8',
+      '--accent': '#2c2a72',
+      '--accent-hover': '#1e1b4b',
+      '--accent-light': '#8c7ae6',
+      '--accent-foreground': '#ffffff',
+      '--accent-rgb': '44, 42, 114',
+    },
+    dark: {
+      '--bg': '#12101f',
+      '--surface': '#1e1b4b',
+      '--surface-2': '#2c2a72',
+      '--text': '#ede9f6',
+      '--text-muted': '#a5a3d4',
+      '--border': '#4a4890',
+      '--accent': '#8c7ae6',
+      '--accent-hover': '#7c6ad6',
+      '--accent-light': '#a99af0',
+      '--accent-foreground': '#12101f',
+      '--accent-rgb': '140, 122, 230',
+    }
+  },
+  oatmeal: {
+    name: "Oatmeal & Ink",
+    psych: "Warm oatmeal neutrals with deep ink accents feel like expensive paper — tactile, crafted, and quietly authoritative. Trust through depth, not spectacle. Top choice for enterprise research tools and deep-tech platforms.",
+    researchNote: "Tentackles 2026 'Oatmeal & Ink' palette: #F3EDE2 + #2B2B2B. Human signal in a world of frictionless digital sameness. Seriousness without coldness.",
+    light: {
+      '--bg': '#f3ede2',
+      '--surface': '#faf7f2',
+      '--surface-2': '#e8e0d4',
+      '--text': '#2b2b2b',
+      '--text-muted': '#6b6560',
+      '--border': '#d8d1c7',
+      '--accent': '#2b2b2b',
+      '--accent-hover': '#1a1a1a',
+      '--accent-light': '#4a4a4a',
+      '--accent-foreground': '#faf7f2',
+      '--accent-rgb': '43, 43, 43',
+    },
+    dark: {
+      '--bg': '#1a1a1a',
+      '--surface': '#2b2b2b',
+      '--surface-2': '#3d3d3d',
+      '--text': '#f3ede2',
+      '--text-muted': '#b0a99e',
+      '--border': '#4a4a4a',
+      '--accent': '#d8d1c7',
+      '--accent-hover': '#c8c1b7',
+      '--accent-light': '#e8e0d4',
+      '--accent-foreground': '#1a1a1a',
+      '--accent-rgb': '216, 209, 199',
+    }
+  },
+  sagebrush: {
+    name: "Muted Sage & Olive",
+    psych: "Desaturated sage and olive greens are the easiest hues for the human eye to process, reducing visual fatigue during long corporate sessions. Rising in 2026 for wellness SaaS, sustainability reporting, and calm productivity tools.",
+    researchNote: "2026 wellness UX trend: muted greens outperform saturated greens for calmness scores. Pairs with terracotta for balanced earth-tone corporate systems.",
+    light: {
+      '--bg': '#f4f5f0',
+      '--surface': '#ffffff',
+      '--surface-2': '#e8ebe0',
+      '--text': '#2c3326',
+      '--text-muted': '#6b7c5c',
+      '--border': '#c5cdb8',
+      '--accent': '#5a6b4a',
+      '--accent-hover': '#4a5b3a',
+      '--accent-light': '#7a8b6a',
+      '--accent-foreground': '#ffffff',
+      '--accent-rgb': '90, 107, 74',
+    },
+    dark: {
+      '--bg': '#1a2018',
+      '--surface': '#2c3326',
+      '--surface-2': '#3d4a35',
+      '--text': '#e8ebe0',
+      '--text-muted': '#9aab8a',
+      '--border': '#5a6b4a',
+      '--accent': '#9aab8a',
+      '--accent-hover': '#8a9b7a',
+      '--accent-light': '#b0c0a0',
+      '--accent-foreground': '#1a2018',
+      '--accent-rgb': '154, 171, 138',
+    }
+  },
+  arctic: {
+    name: "Arctic Frost",
+    psych: "Icy blue-grays deliver clinical clarity and composed professionalism for fintech, healthcare, and data-intensive interfaces. Cool without feeling sterile — the antidote to overstimulating warm palettes in high-stakes environments.",
+    researchNote: "Cool tones reduce cognitive load in decision-heavy UIs. Arctic frost variants trending in 2026 for compliance, analytics, and enterprise data platforms.",
+    light: {
+      '--bg': '#f0f4f8',
+      '--surface': '#ffffff',
+      '--surface-2': '#e8f0f6',
+      '--text': '#1a2e3b',
+      '--text-muted': '#5a7a8c',
+      '--border': '#c8dae6',
+      '--accent': '#3a7ca5',
+      '--accent-hover': '#2a6c95',
+      '--accent-light': '#5a9cc5',
+      '--accent-foreground': '#ffffff',
+      '--accent-rgb': '58, 124, 165',
+    },
+    dark: {
+      '--bg': '#0f1a24',
+      '--surface': '#1a2e3b',
+      '--surface-2': '#2a4a5b',
+      '--text': '#e8f0f6',
+      '--text-muted': '#8aacbe',
+      '--border': '#3a7ca5',
+      '--accent': '#6ab4d4',
+      '--accent-hover': '#5aa4c4',
+      '--accent-light': '#8ac8e4',
+      '--accent-foreground': '#0f1a24',
+      '--accent-rgb': '106, 180, 212',
+    }
+  },
+  copper: {
+    name: "Burnished Copper",
+    psych: "Warm copper and bronze metallics signal craftsmanship, heritage, and premium substance. The 2026 answer to cold corporate minimalism — human warmth with executive weight for consulting, legal, and luxury B2B tiers.",
+    researchNote: "Warm metallics top premium perception scores in 2026 brand studies. Best paired with cool neutrals (navy, slate) for balanced corporate warmth without overstimulation.",
+    light: {
+      '--bg': '#faf6f1',
+      '--surface': '#ffffff',
+      '--surface-2': '#f0e8dc',
+      '--text': '#3d2e1f',
+      '--text-muted': '#8b7355',
+      '--border': '#d4c4a8',
+      '--accent': '#b87333',
+      '--accent-hover': '#9a5f28',
+      '--accent-light': '#d4944a',
+      '--accent-foreground': '#ffffff',
+      '--accent-rgb': '184, 115, 51',
+    },
+    dark: {
+      '--bg': '#2a1f14',
+      '--surface': '#3d2e1f',
+      '--surface-2': '#5a4530',
+      '--text': '#f0e8dc',
+      '--text-muted': '#c4a882',
+      '--border': '#8b7355',
+      '--accent': '#d4944a',
+      '--accent-hover': '#b87333',
+      '--accent-light': '#e8b06a',
+      '--accent-foreground': '#2a1f14',
+      '--accent-rgb': '212, 148, 74',
+    }
+  },
+  apricot: {
+    name: "Apricot Approach",
+    psych: "WGSN's Apricot Crush lineage — soft peachy warmth that humanizes corporate interfaces without aggressive urgency. Bridges the gap between sterile cool SaaS and overstimulating orange CTAs.",
+    researchNote: "WGSN Key Colour Apricot Crush (2024) continues influencing 2026 warmth trends. Soft peach outperforms pure orange for approachability in B2B onboarding flows.",
+    light: {
+      '--bg': '#fef6f0',
+      '--surface': '#ffffff',
+      '--surface-2': '#fde8d8',
+      '--text': '#4a2c1a',
+      '--text-muted': '#9a6b4a',
+      '--border': '#f0c8a8',
+      '--accent': '#d4845a',
+      '--accent-hover': '#b86e44',
+      '--accent-light': '#e8a87c',
+      '--accent-foreground': '#ffffff',
+      '--accent-rgb': '212, 132, 90',
+    },
+    dark: {
+      '--bg': '#3a2218',
+      '--surface': '#4a2c1a',
+      '--surface-2': '#6a4030',
+      '--text': '#fef6f0',
+      '--text-muted': '#d4a882',
+      '--border': '#9a6b4a',
+      '--accent': '#e8a87c',
+      '--accent-hover': '#d4845a',
+      '--accent-light': '#f0c0a0',
+      '--accent-foreground': '#3a2218',
+      '--accent-rgb': '232, 168, 124',
+    }
+  },
+  sandstone: {
+    name: "Sandstone Warmth",
+    psych: "Desert sandstone and warm beige neutrals anchor users in stability and organic calm. Benjamin Moore & HGTV 2026 collections emphasize warm neutrals as the foundation for approachable corporate environments.",
+    researchNote: "2026 paint trend forecasts: warm neutrals replace cool grays as default corporate base. Sandstone tones reduce digital anxiety while maintaining professional polish.",
+    light: {
+      '--bg': '#f5f0e8',
+      '--surface': '#ffffff',
+      '--surface-2': '#ebe4d8',
+      '--text': '#3d3830',
+      '--text-muted': '#8b8278',
+      '--border': '#d4c8b8',
+      '--accent': '#a08060',
+      '--accent-hover': '#886848',
+      '--accent-light': '#b89878',
+      '--accent-foreground': '#ffffff',
+      '--accent-rgb': '160, 128, 96',
+    },
+    dark: {
+      '--bg': '#2a2620',
+      '--surface': '#3d3830',
+      '--surface-2': '#5a5248',
+      '--text': '#f5f0e8',
+      '--text-muted': '#b8a898',
+      '--border': '#8b8278',
+      '--accent': '#c4a882',
+      '--accent-hover': '#b09872',
+      '--accent-light': '#d4b898',
+      '--accent-foreground': '#2a2620',
+      '--accent-rgb': '196, 168, 130',
+    }
+  },
+  saffron: {
+    name: "Saffron Meridian",
+    psych: "Refined saffron and golden amber warmth tailored for Indian SMB SaaS — culturally resonant energy that signals optimism and forward momentum while maintaining corporate credibility when balanced with cool neutrals.",
+    researchNote: "Indian corporate context: saffron and gold carry cultural significance. Pair with navy or teal anchors for trust + warmth — top recommendation in 2026 India-focused B2B research.",
+    light: {
+      '--bg': '#fffbf0',
+      '--surface': '#ffffff',
+      '--surface-2': '#fef3c7',
+      '--text': '#451a03',
+      '--text-muted': '#92700c',
+      '--border': '#fde68a',
+      '--accent': '#e8841a',
+      '--accent-hover': '#c46e0a',
+      '--accent-light': '#f0a030',
+      '--accent-foreground': '#ffffff',
+      '--accent-rgb': '232, 132, 26',
+    },
+    dark: {
+      '--bg': '#451a03',
+      '--surface': '#78350f',
+      '--surface-2': '#92400e',
+      '--text': '#fffbf0',
+      '--text-muted': '#fde68a',
+      '--border': '#b45309',
+      '--accent': '#f0a030',
+      '--accent-hover': '#e8841a',
+      '--accent-light': '#fbbf24',
+      '--accent-foreground': '#451a03',
+      '--accent-rgb': '240, 160, 48',
+    }
+  },
+  rosewood: {
+    name: "Rosewood Reserve",
+    psych: "Muted burgundy and rosewood tones convey understated luxury, gravitas, and human intimacy. The warm corporate choice for premium services, executive coaching, and high-touch B2B relationship platforms.",
+    researchNote: "Mood-driven 2025 branding: desaturated warm reds signal premium without aggression. Rosewood pairs with oatmeal neutrals for sophisticated corporate warmth.",
+    light: {
+      '--bg': '#faf5f4',
+      '--surface': '#ffffff',
+      '--surface-2': '#f0e4e2',
+      '--text': '#3d2020',
+      '--text-muted': '#8b5a5a',
+      '--border': '#d4b8b4',
+      '--accent': '#7c3d3d',
+      '--accent-hover': '#642d2d',
+      '--accent-light': '#9a5a5a',
+      '--accent-foreground': '#ffffff',
+      '--accent-rgb': '124, 61, 61',
+    },
+    dark: {
+      '--bg': '#2a1414',
+      '--surface': '#3d2020',
+      '--surface-2': '#5a3030',
+      '--text': '#f0e4e2',
+      '--text-muted': '#c49a9a',
+      '--border': '#8b5a5a',
+      '--accent': '#c47a7a',
+      '--accent-hover': '#b06a6a',
+      '--accent-light': '#d49a9a',
+      '--accent-foreground': '#2a1414',
+      '--accent-rgb': '196, 122, 122',
+    }
   }
 };
 
@@ -357,13 +675,23 @@ const PALETTE_SCORES: Record<PaletteKey, { calmness: number; premium: number }> 
   terracotta: { calmness: 7.9, premium: 7.8 },
   honey: { calmness: 8.6, premium: 8.5 },
   cloud: { calmness: 9.0, premium: 8.6 },
+  transformative: { calmness: 9.2, premium: 8.8 },
+  twilight: { calmness: 8.8, premium: 9.0 },
+  oatmeal: { calmness: 9.0, premium: 8.9 },
+  sagebrush: { calmness: 9.1, premium: 8.4 },
+  arctic: { calmness: 9.3, premium: 8.5 },
+  copper: { calmness: 7.4, premium: 9.1 },
+  apricot: { calmness: 7.7, premium: 8.0 },
+  sandstone: { calmness: 8.3, premium: 8.2 },
+  saffron: { calmness: 7.2, premium: 8.4 },
+  rosewood: { calmness: 7.8, premium: 9.0 },
 };
 
 const paletteKeys = Object.keys(palettes) as PaletteKey[];
 
 const getChartData = () =>
   paletteKeys.map((key) => ({
-    palette: palettes[key].name.split(' ').slice(0, 2).join(' '),
+    palette: palettes[key].name.split(' ')[0],
     ...PALETTE_SCORES[key],
   }));
 
@@ -506,7 +834,7 @@ const App: React.FC = () => {
   };
 
   const stats = [
-    { label: "Trust Score", value: COOL_PALETTES.includes(currentPaletteKey) ? "94" : "81", unit: "%", icon: ShieldCheck, trend: "+12%" },
+    { label: "Trust Score", value: CALM_PALETTES.includes(currentPaletteKey) ? "94" : "81", unit: "%", icon: ShieldCheck, trend: "+12%" },
     { label: "User Calm Rating", value: currentAvgCalm > 0 ? currentAvgCalm.toFixed(1) : PALETTE_SCORES[currentPaletteKey].calmness.toFixed(1), unit: "/10", icon: Heart, trend: "+0.3" },
     { label: "Premium Perception", value: currentAvgPremium > 0 ? currentAvgPremium.toFixed(1) : PALETTE_SCORES[currentPaletteKey].premium.toFixed(1), unit: "/10", icon: Award, trend: "+0.5" },
     { label: "Session Retention", value: WARM_PALETTES.includes(currentPaletteKey) ? "87" : "92", unit: "%", icon: TrendingUp, trend: "+8%" },
@@ -547,6 +875,34 @@ const App: React.FC = () => {
       </div>
     );
   };
+
+  const renderPaletteGrid = (keys: PaletteKey[]) => (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
+      {keys.map((key) => {
+        const pal = palettes[key];
+        const isActive = key === currentPaletteKey;
+        return (
+          <button
+            key={key}
+            onClick={() => switchPalette(key)}
+            className={`palette-pill text-left flex-col items-start h-auto py-5 px-6 ${isActive ? 'active ring-1 ring-offset-2 ring-offset-[var(--bg)] ring-[var(--accent)]' : ''}`}
+          >
+            <div className="flex items-center gap-3 w-full mb-3">
+              <div className="flex -space-x-1">
+                <div className="color-swatch" style={{ backgroundColor: pal.light['--accent'] }} />
+                <div className="color-swatch" style={{ backgroundColor: pal.dark['--accent'] }} />
+              </div>
+              <div className="font-semibold text-lg tracking-tight">{pal.name}</div>
+            </div>
+            <p className="text-xs text-[var(--text-muted)] line-clamp-3 leading-snug">{pal.psych}</p>
+            {isActive && (
+              <div className="mt-3 text-[10px] font-mono accent-text">CURRENTLY ACTIVE • LIVE PREVIEW</div>
+            )}
+          </button>
+        );
+      })}
+    </div>
+  );
 
   const renderColorLab = () => (
     <div className="space-y-6">
@@ -603,7 +959,7 @@ const App: React.FC = () => {
           <div className="h-2.5 bg-[var(--surface-2)] rounded-full overflow-hidden">
             <div 
               className="h-full accent-bg transition-all duration-700" 
-              style={{ width: COOL_PALETTES.includes(currentPaletteKey) ? '92%' : '78%' }}
+              style={{ width: CALM_PALETTES.includes(currentPaletteKey) ? '92%' : '78%' }}
             />
           </div>
           <p className="text-[10px] text-[var(--text-muted)] mt-1.5">Based on 1,248 user tests • +14% vs baseline</p>
@@ -679,7 +1035,7 @@ const App: React.FC = () => {
             Test Color Psychology.<br />Craft Premium Calm.
           </h1>
           <p className="text-xl text-[var(--text-muted)] max-w-lg">
-            A live React demo exploring corporate calm color palettes, dark/light modes, and studio-quality micro-interactions. 
+            A live React demo exploring 20 corporate calm & warmth palettes, dark/light modes, and studio-quality micro-interactions. 
             Built to validate emotional impact through real interaction.
           </p>
           <div className="flex flex-wrap gap-3 mt-8">
@@ -704,7 +1060,7 @@ const App: React.FC = () => {
             <div>
               <div className="uppercase text-xs tracking-[3px] text-[var(--text-muted)]">CHOOSE YOUR ACCENT</div>
               <h2 className="text-3xl font-semibold tracking-tight">Corporate Color Palettes</h2>
-              <p className="text-xs text-[var(--text-muted)] mt-1">{paletteKeys.length} research-backed palettes</p>
+              <p className="text-xs text-[var(--text-muted)] mt-1">{paletteKeys.length} palettes — {CALM_PALETTES.length} corporate calm, {WARM_PALETTES.length} corporate warmth</p>
             </div>
             <div className="flex flex-wrap gap-2">
               <button onClick={randomCombination} className="btn btn-secondary text-xs flex items-center gap-1.5">
@@ -716,30 +1072,23 @@ const App: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
-            {paletteKeys.map((key) => {
-              const pal = palettes[key];
-              const isActive = key === currentPaletteKey;
-              return (
-                <button
-                  key={key}
-                  onClick={() => switchPalette(key)}
-                  className={`palette-pill text-left flex-col items-start h-auto py-5 px-6 ${isActive ? 'active ring-1 ring-offset-2 ring-offset-[var(--bg)] ring-[var(--accent)]' : ''}`}
-                >
-                  <div className="flex items-center gap-3 w-full mb-3">
-                    <div className="flex -space-x-1">
-                      <div className="color-swatch" style={{ backgroundColor: pal.light['--accent'] }} />
-                      <div className="color-swatch" style={{ backgroundColor: pal.dark['--accent'] }} />
-                    </div>
-                    <div className="font-semibold text-lg tracking-tight">{pal.name}</div>
-                  </div>
-                  <p className="text-xs text-[var(--text-muted)] line-clamp-3 leading-snug">{pal.psych}</p>
-                  {isActive && (
-                    <div className="mt-3 text-[10px] font-mono accent-text">CURRENTLY ACTIVE • LIVE PREVIEW</div>
-                  )}
-                </button>
-              );
-            })}
+          <div className="space-y-8">
+            <div>
+              <div className="flex items-center gap-2 mb-3">
+                <ShieldCheck className="w-4 h-4 accent-text" />
+                <h3 className="text-lg font-semibold tracking-tight">Corporate Calm</h3>
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-[var(--surface-2)] text-[var(--text-muted)]">Trust • Serenity • Focus</span>
+              </div>
+              {renderPaletteGrid(CALM_PALETTES)}
+            </div>
+            <div>
+              <div className="flex items-center gap-2 mb-3">
+                <Heart className="w-4 h-4 accent-text" />
+                <h3 className="text-lg font-semibold tracking-tight">Corporate Warmth</h3>
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-[var(--surface-2)] text-[var(--text-muted)]">Approachability • Energy • Premium</span>
+              </div>
+              {renderPaletteGrid(WARM_PALETTES)}
+            </div>
           </div>
         </div>
 
@@ -798,10 +1147,10 @@ const App: React.FC = () => {
           </div>
 
           <div className="card p-6">
-            <ResponsiveContainer width="100%" height={380}>
-              <BarChart data={chartData} barCategoryGap={24}>
+            <ResponsiveContainer width="100%" height={480}>
+              <BarChart data={chartData} barCategoryGap={12}>
                 <CartesianGrid strokeDasharray="2 2" stroke="var(--border)" xAxisId="0" yAxisId="0" />
-                <XAxis xAxisId="0" dataKey="palette" tick={{ fill: 'var(--text-muted)', fontSize: 12 }} />
+                <XAxis xAxisId="0" dataKey="palette" tick={{ fill: 'var(--text-muted)', fontSize: 10 }} angle={-35} textAnchor="end" height={60} />
                 <YAxis yAxisId="0" domain={[0, 10]} tick={{ fill: 'var(--text-muted)', fontSize: 12 }} />
                 <Tooltip 
                   contentStyle={{ 
