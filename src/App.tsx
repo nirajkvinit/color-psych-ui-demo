@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Moon, Sun, Palette, BarChart3, TrendingUp, ShieldCheck, Leaf, 
-  Zap, Heart, Award, RefreshCw, Download, Star, Shuffle, Columns2 
+  Zap, Heart, Award, RefreshCw, Download, Star, Shuffle, Columns2, History 
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -22,16 +22,26 @@ type PaletteKey =
   | 'calm' | 'warm' | 'verdant' | 'lumina'
   | 'navy' | 'slate' | 'charcoal' | 'terracotta' | 'honey' | 'cloud'
   | 'transformative' | 'twilight' | 'oatmeal' | 'sagebrush' | 'arctic'
-  | 'copper' | 'apricot' | 'sandstone' | 'saffron' | 'rosewood';
+  | 'copper' | 'apricot' | 'sandstone' | 'saffron' | 'rosewood'
+  | 'heritageblue' | 'powderera' | 'modernist' | 'huntergreen' | 'tealoffice'
+  | 'goldenage' | 'heritagered' | 'kodakwarm' | 'harvestera' | 'executive';
 
-const CALM_PALETTES: PaletteKey[] = [
+const MODERN_CALM_PALETTES: PaletteKey[] = [
   'calm', 'verdant', 'lumina', 'navy', 'slate', 'cloud',
   'transformative', 'twilight', 'oatmeal', 'sagebrush', 'arctic',
 ];
-const WARM_PALETTES: PaletteKey[] = [
+const HISTORICAL_CALM_PALETTES: PaletteKey[] = [
+  'heritageblue', 'powderera', 'modernist', 'huntergreen', 'tealoffice',
+];
+const MODERN_WARM_PALETTES: PaletteKey[] = [
   'warm', 'charcoal', 'terracotta', 'honey',
   'copper', 'apricot', 'sandstone', 'saffron', 'rosewood',
 ];
+const HISTORICAL_WARM_PALETTES: PaletteKey[] = [
+  'goldenage', 'heritagered', 'kodakwarm', 'harvestera', 'executive',
+];
+const CALM_PALETTES: PaletteKey[] = [...MODERN_CALM_PALETTES, ...HISTORICAL_CALM_PALETTES];
+const WARM_PALETTES: PaletteKey[] = [...MODERN_WARM_PALETTES, ...HISTORICAL_WARM_PALETTES];
 
 interface UserRating {
   palette: PaletteKey;
@@ -661,6 +671,316 @@ const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-foreground': '#2a1414',
       '--accent-rgb': '196, 122, 122',
     }
+  },
+  heritageblue: {
+    name: "IBM Heritage Blue",
+    psych: "The definitive enterprise calm color — Paul Rand's 1972 IBM 8-bar era established Pantone 2718C blue as the global shorthand for technological trust, stability, and serious business. Still the benchmark for corporate credibility.",
+    researchNote: "IBM History: 'IBM Blue' (PMS 2718C) core of official palette since 1972. Thomas J. Watson Jr.: 'Good design is good business.' Blue = serenity & security per century of color psychology research.",
+    light: {
+      '--bg': '#f0f6fc',
+      '--surface': '#ffffff',
+      '--surface-2': '#e4eef8',
+      '--text': '#0a2540',
+      '--text-muted': '#4a6a8c',
+      '--border': '#b8d4f0',
+      '--accent': '#1f70c1',
+      '--accent-hover': '#1558a0',
+      '--accent-light': '#4a90d9',
+      '--accent-foreground': '#ffffff',
+      '--accent-rgb': '31, 112, 193',
+    },
+    dark: {
+      '--bg': '#0a1a2e',
+      '--surface': '#0f2847',
+      '--surface-2': '#1a3a5c',
+      '--text': '#e4eef8',
+      '--text-muted': '#8cb4d9',
+      '--border': '#1f70c1',
+      '--accent': '#4a90d9',
+      '--accent-hover': '#3a80c9',
+      '--accent-light': '#6ab0e9',
+      '--accent-foreground': '#0a1a2e',
+      '--accent-rgb': '74, 144, 217',
+    }
+  },
+  powderera: {
+    name: "1950s Powder Blue",
+    psych: "Post-WWII optimism crystallized in powder blue — the color of the television age and Eisenhower-era corporate confidence. Soft, approachable cool that made institutions feel human after decades of black-and-white formality.",
+    researchNote: "1940s–50s Color Revolution (Ametra): color TV forced brands to rethink identities. Powder blue dominated 1950s corporate & domestic interiors — optimism without aggression.",
+    light: {
+      '--bg': '#eef6fb',
+      '--surface': '#ffffff',
+      '--surface-2': '#dceef8',
+      '--text': '#1a3a52',
+      '--text-muted': '#5a8ab0',
+      '--border': '#b0d4ec',
+      '--accent': '#5a9fd4',
+      '--accent-hover': '#4088c0',
+      '--accent-light': '#7ab8e4',
+      '--accent-foreground': '#ffffff',
+      '--accent-rgb': '90, 159, 212',
+    },
+    dark: {
+      '--bg': '#142838',
+      '--surface': '#1e3a52',
+      '--surface-2': '#2a5070',
+      '--text': '#dceef8',
+      '--text-muted': '#8ac0e4',
+      '--border': '#4088c0',
+      '--accent': '#7ab8e4',
+      '--accent-hover': '#5a9fd4',
+      '--accent-light': '#9ad0f4',
+      '--accent-foreground': '#142838',
+      '--accent-rgb': '122, 184, 228',
+    }
+  },
+  modernist: {
+    name: "1960s Modernist Navy",
+    psych: "The International Style era — Paul Rand's 1956 IBM City Medium logo and corporate modernism championed clean navy, structured grids, and rational calm. Design as a business strategy, not decoration.",
+    researchNote: "IBM 1956 logo redesign; 1960s cultural shift toward rational corporate design. Financial & tech sectors adopted navy as trust shorthand — still 70%+ of SaaS defaults to blue variants today.",
+    light: {
+      '--bg': '#f4f6f8',
+      '--surface': '#ffffff',
+      '--surface-2': '#e8ecf0',
+      '--text': '#1a2a3a',
+      '--text-muted': '#5a6a7a',
+      '--border': '#c8d4e0',
+      '--accent': '#1a365d',
+      '--accent-hover': '#0f2847',
+      '--accent-light': '#2a4a7d',
+      '--accent-foreground': '#ffffff',
+      '--accent-rgb': '26, 54, 93',
+    },
+    dark: {
+      '--bg': '#0f1a28',
+      '--surface': '#1a2a3a',
+      '--surface-2': '#2a3a4a',
+      '--text': '#e8ecf0',
+      '--text-muted': '#9aaaba',
+      '--border': '#3a5a7a',
+      '--accent': '#5a8ab8',
+      '--accent-hover': '#4a7aa8',
+      '--accent-light': '#7aaad0',
+      '--accent-foreground': '#0f1a28',
+      '--accent-rgb': '90, 138, 184',
+    }
+  },
+  huntergreen: {
+    name: "Hunter Green Trust",
+    psych: "From 1970s boardrooms through 1990s private banking — hunter green signaled old-money stability, institutional permanence, and conservative calm. The color of leather-bound annual reports and trust departments.",
+    researchNote: "Financial institutions favored deep greens for stability (Ametra: green = youth, freshness, health — but dark hunter green specifically signals wealth & permanence in corporate history).",
+    light: {
+      '--bg': '#f2f5f0',
+      '--surface': '#ffffff',
+      '--surface-2': '#e4ebe0',
+      '--text': '#1a2e1a',
+      '--text-muted': '#4a6a4a',
+      '--border': '#b8d0b8',
+      '--accent': '#355e3b',
+      '--accent-hover': '#2a4a2f',
+      '--accent-light': '#4a7a50',
+      '--accent-foreground': '#ffffff',
+      '--accent-rgb': '53, 94, 59',
+    },
+    dark: {
+      '--bg': '#0f1a10',
+      '--surface': '#1a2e1a',
+      '--surface-2': '#2a4a2f',
+      '--text': '#e4ebe0',
+      '--text-muted': '#8ab08a',
+      '--border': '#355e3b',
+      '--accent': '#5a8a60',
+      '--accent-hover': '#4a7a50',
+      '--accent-light': '#7aaa80',
+      '--accent-foreground': '#0f1a10',
+      '--accent-rgb': '90, 138, 96',
+    }
+  },
+  tealoffice: {
+    name: "1990s Office Teal",
+    psych: "The corporate software decade — muted teal and gray defined cubicle culture, Windows-era productivity, and the dot-com transition. Ubiquitous calm that millions associated with 'serious computer work.'",
+    researchNote: "1990s office design: teal + gray dominated corporate interiors & software UI. Nokia, early Yahoo, and enterprise software embraced textured teal-gray identities (Ametra: digital dawn 1980s–90s).",
+    light: {
+      '--bg': '#f0f4f4',
+      '--surface': '#ffffff',
+      '--surface-2': '#e0eaea',
+      '--text': '#1a3030',
+      '--text-muted': '#5a7a7a',
+      '--border': '#b0cccc',
+      '--accent': '#367588',
+      '--accent-hover': '#2a5f6e',
+      '--accent-light': '#4a8a9a',
+      '--accent-foreground': '#ffffff',
+      '--accent-rgb': '54, 117, 136',
+    },
+    dark: {
+      '--bg': '#141f1f',
+      '--surface': '#1a3030',
+      '--surface-2': '#2a4a4a',
+      '--text': '#e0eaea',
+      '--text-muted': '#8ababa',
+      '--border': '#367588',
+      '--accent': '#5aaaba',
+      '--accent-hover': '#4a9aaa',
+      '--accent-light': '#7acad0',
+      '--accent-foreground': '#141f1f',
+      '--accent-rgb': '90, 170, 186',
+    }
+  },
+  goldenage: {
+    name: "1940s Golden Age",
+    psych: "The post-war color explosion — Shell's 1940s yellow-and-red pivot proved color could evoke emotion at scale. Bright warmth that broke the monochrome corporate era and birthed modern brand psychology.",
+    researchNote: "Ametra: Shell added yellow & red post-1940s targeting emotional response. BMW, United Airlines, Pepsi among first color pioneers. Red = power/confidence; yellow = optimism & visibility.",
+    light: {
+      '--bg': '#fffdf0',
+      '--surface': '#ffffff',
+      '--surface-2': '#fff8d8',
+      '--text': '#3a2800',
+      '--text-muted': '#8a7020',
+      '--border': '#f0e0a0',
+      '--accent': '#e8a800',
+      '--accent-hover': '#c89000',
+      '--accent-light': '#ffc820',
+      '--accent-foreground': '#3a2800',
+      '--accent-rgb': '232, 168, 0',
+    },
+    dark: {
+      '--bg': '#2a2000',
+      '--surface': '#3a3008',
+      '--surface-2': '#5a4818',
+      '--text': '#fff8d8',
+      '--text-muted': '#d4b860',
+      '--border': '#8a7020',
+      '--accent': '#ffc820',
+      '--accent-hover': '#e8a800',
+      '--accent-light': '#ffd840',
+      '--accent-foreground': '#2a2000',
+      '--accent-rgb': '255, 200, 32',
+    }
+  },
+  heritagered: {
+    name: "Heritage Confidence Red",
+    psych: "Coca-Cola's 1940s red-and-white identity pioneered warm corporate confidence — stimulating energy, passion, and decisive action. The template for every consumer brand seeking human warmth with corporate scale.",
+    researchNote: "Ametra: Coca-Cola shifted from B&W to red & white in 1940s color revolution. Red stimulates energy & excitement — 90% of snap judgments within 90 seconds are color-based.",
+    light: {
+      '--bg': '#fff5f5',
+      '--surface': '#ffffff',
+      '--surface-2': '#ffe8e8',
+      '--text': '#4a0a0a',
+      '--text-muted': '#9a3a3a',
+      '--border': '#f0b8b8',
+      '--accent': '#c41230',
+      '--accent-hover': '#a00e28',
+      '--accent-light': '#e03050',
+      '--accent-foreground': '#ffffff',
+      '--accent-rgb': '196, 18, 48',
+    },
+    dark: {
+      '--bg': '#2a0808',
+      '--surface': '#4a1010',
+      '--surface-2': '#6a2020',
+      '--text': '#ffe8e8',
+      '--text-muted': '#e08080',
+      '--border': '#9a3a3a',
+      '--accent': '#e03050',
+      '--accent-hover': '#c41230',
+      '--accent-light': '#f05070',
+      '--accent-foreground': '#ffffff',
+      '--accent-rgb': '224, 48, 80',
+    }
+  },
+  kodakwarm: {
+    name: "Kodak Mid-Century Yellow",
+    psych: "Kodak's golden yellow box became one of history's most recognized warm corporate symbols — optimism, clarity, and the promise of captured memories. Mid-century warmth that felt innovative yet deeply trustworthy.",
+    researchNote: "Kodak yellow (est. 1935 packaging, iconic by 1960s–80s) = warmth + clarity in corporate color history. Yellow signals optimism & visibility — Shell, Kodak, McDonald's archetype.",
+    light: {
+      '--bg': '#fffef0',
+      '--surface': '#ffffff',
+      '--surface-2': '#fff8c8',
+      '--text': '#3a3000',
+      '--text-muted': '#8a7820',
+      '--border': '#f0e080',
+      '--accent': '#ffc600',
+      '--accent-hover': '#d4a800',
+      '--accent-light': '#ffd830',
+      '--accent-foreground': '#3a3000',
+      '--accent-rgb': '255, 198, 0',
+    },
+    dark: {
+      '--bg': '#2a2400',
+      '--surface': '#3a3408',
+      '--surface-2': '#5a5018',
+      '--text': '#fff8c8',
+      '--text-muted': '#d4c060',
+      '--border': '#8a7820',
+      '--accent': '#ffd830',
+      '--accent-hover': '#ffc600',
+      '--accent-light': '#ffe850',
+      '--accent-foreground': '#2a2400',
+      '--accent-rgb': '255, 216, 48',
+    }
+  },
+  harvestera: {
+    name: "1970s Harvest Gold",
+    psych: "Harvest gold dominated 1960s–70s corporate interiors, appliances, and institutional design — warm earthiness that made offices feel grounded during economic uncertainty. Wikipedia documents it as a defining era color.",
+    researchNote: "Harvest gold (Wikipedia): popular 1960s–70s for appliances & interiors alongside avocado green. 1970s corporate design reflected economic uncertainty with warm, earthy palettes (Ametra: cultural movements shaped brand colors).",
+    light: {
+      '--bg': '#faf6ee',
+      '--surface': '#ffffff',
+      '--surface-2': '#f0e8d0',
+      '--text': '#3a3018',
+      '--text-muted': '#8a7850',
+      '--border': '#d8c8a0',
+      '--accent': '#c8a030',
+      '--accent-hover': '#a88820',
+      '--accent-light': '#e0b848',
+      '--accent-foreground': '#3a3018',
+      '--accent-rgb': '200, 160, 48',
+    },
+    dark: {
+      '--bg': '#2a2210',
+      '--surface': '#3a3020',
+      '--surface-2': '#5a4830',
+      '--text': '#f0e8d0',
+      '--text-muted': '#c8b080',
+      '--border': '#8a7850',
+      '--accent': '#e0b848',
+      '--accent-hover': '#c8a030',
+      '--accent-light': '#f0d060',
+      '--accent-foreground': '#2a2210',
+      '--accent-rgb': '224, 184, 72',
+    }
+  },
+  executive: {
+    name: "1980s Executive Burgundy",
+    psych: "The power-decade boardroom — deep burgundy, mahogany tones, and executive maroon defined 1980s corporate luxury. Warm authority for law firms, consultancies, and C-suite culture before minimalism took over.",
+    researchNote: "1980s: digital design tools enabled gradients & 3D effects; executive burgundy/mahogany dominated premium corporate interiors. Pre-minimalism warmth — law, finance, consulting boardroom standard.",
+    light: {
+      '--bg': '#f8f0f2',
+      '--surface': '#ffffff',
+      '--surface-2': '#f0e0e4',
+      '--text': '#3a1020',
+      '--text-muted': '#7a4050',
+      '--border': '#d0a8b0',
+      '--accent': '#722f37',
+      '--accent-hover': '#5a2028',
+      '--accent-light': '#9a4a55',
+      '--accent-foreground': '#ffffff',
+      '--accent-rgb': '114, 47, 55',
+    },
+    dark: {
+      '--bg': '#1a0810',
+      '--surface': '#3a1020',
+      '--surface-2': '#5a2030',
+      '--text': '#f0e0e4',
+      '--text-muted': '#c08090',
+      '--border': '#7a4050',
+      '--accent': '#b85a68',
+      '--accent-hover': '#9a4a55',
+      '--accent-light': '#d08090',
+      '--accent-foreground': '#1a0810',
+      '--accent-rgb': '184, 90, 104',
+    }
   }
 };
 
@@ -685,6 +1005,16 @@ const PALETTE_SCORES: Record<PaletteKey, { calmness: number; premium: number }> 
   sandstone: { calmness: 8.3, premium: 8.2 },
   saffron: { calmness: 7.2, premium: 8.4 },
   rosewood: { calmness: 7.8, premium: 9.0 },
+  heritageblue: { calmness: 9.4, premium: 8.9 },
+  powderera: { calmness: 8.8, premium: 8.1 },
+  modernist: { calmness: 9.0, premium: 8.6 },
+  huntergreen: { calmness: 9.2, premium: 8.8 },
+  tealoffice: { calmness: 8.6, premium: 7.9 },
+  goldenage: { calmness: 7.0, premium: 7.6 },
+  heritagered: { calmness: 6.5, premium: 7.8 },
+  kodakwarm: { calmness: 7.1, premium: 7.5 },
+  harvestera: { calmness: 7.5, premium: 7.4 },
+  executive: { calmness: 7.3, premium: 8.7 },
 };
 
 const paletteKeys = Object.keys(palettes) as PaletteKey[];
@@ -1035,7 +1365,7 @@ const App: React.FC = () => {
             Test Color Psychology.<br />Craft Premium Calm.
           </h1>
           <p className="text-xl text-[var(--text-muted)] max-w-lg">
-            A live React demo exploring 20 corporate calm & warmth palettes, dark/light modes, and studio-quality micro-interactions. 
+            A live React demo exploring 30 modern & historical corporate calm & warmth palettes, dark/light modes, and studio-quality micro-interactions. 
             Built to validate emotional impact through real interaction.
           </p>
           <div className="flex flex-wrap gap-3 mt-8">
@@ -1060,7 +1390,9 @@ const App: React.FC = () => {
             <div>
               <div className="uppercase text-xs tracking-[3px] text-[var(--text-muted)]">CHOOSE YOUR ACCENT</div>
               <h2 className="text-3xl font-semibold tracking-tight">Corporate Color Palettes</h2>
-              <p className="text-xs text-[var(--text-muted)] mt-1">{paletteKeys.length} palettes — {CALM_PALETTES.length} corporate calm, {WARM_PALETTES.length} corporate warmth</p>
+              <p className="text-xs text-[var(--text-muted)] mt-1">
+                {paletteKeys.length} palettes — {MODERN_CALM_PALETTES.length + MODERN_WARM_PALETTES.length} modern + {HISTORICAL_CALM_PALETTES.length + HISTORICAL_WARM_PALETTES.length} historical
+              </p>
             </div>
             <div className="flex flex-wrap gap-2">
               <button onClick={randomCombination} className="btn btn-secondary text-xs flex items-center gap-1.5">
@@ -1072,22 +1404,38 @@ const App: React.FC = () => {
             </div>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-10">
             <div>
               <div className="flex items-center gap-2 mb-3">
                 <ShieldCheck className="w-4 h-4 accent-text" />
-                <h3 className="text-lg font-semibold tracking-tight">Corporate Calm</h3>
-                <span className="text-[10px] px-2 py-0.5 rounded-full bg-[var(--surface-2)] text-[var(--text-muted)]">Trust • Serenity • Focus</span>
+                <h3 className="text-lg font-semibold tracking-tight">Modern Corporate Calm</h3>
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-[var(--surface-2)] text-[var(--text-muted)]">2020s–2026 Research</span>
               </div>
-              {renderPaletteGrid(CALM_PALETTES)}
+              {renderPaletteGrid(MODERN_CALM_PALETTES)}
+            </div>
+            <div>
+              <div className="flex items-center gap-2 mb-3">
+                <History className="w-4 h-4 accent-text" />
+                <h3 className="text-lg font-semibold tracking-tight">Historical Corporate Calm</h3>
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-[var(--surface-2)] text-[var(--text-muted)]">1950s–1990s Era Classics</span>
+              </div>
+              {renderPaletteGrid(HISTORICAL_CALM_PALETTES)}
             </div>
             <div>
               <div className="flex items-center gap-2 mb-3">
                 <Heart className="w-4 h-4 accent-text" />
-                <h3 className="text-lg font-semibold tracking-tight">Corporate Warmth</h3>
-                <span className="text-[10px] px-2 py-0.5 rounded-full bg-[var(--surface-2)] text-[var(--text-muted)]">Approachability • Energy • Premium</span>
+                <h3 className="text-lg font-semibold tracking-tight">Modern Corporate Warmth</h3>
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-[var(--surface-2)] text-[var(--text-muted)]">2020s–2026 Research</span>
               </div>
-              {renderPaletteGrid(WARM_PALETTES)}
+              {renderPaletteGrid(MODERN_WARM_PALETTES)}
+            </div>
+            <div>
+              <div className="flex items-center gap-2 mb-3">
+                <History className="w-4 h-4 accent-text" />
+                <h3 className="text-lg font-semibold tracking-tight">Historical Corporate Warmth</h3>
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-[var(--surface-2)] text-[var(--text-muted)]">1940s–1980s Era Classics</span>
+              </div>
+              {renderPaletteGrid(HISTORICAL_WARM_PALETTES)}
             </div>
           </div>
         </div>
@@ -1147,10 +1495,10 @@ const App: React.FC = () => {
           </div>
 
           <div className="card p-6">
-            <ResponsiveContainer width="100%" height={480}>
-              <BarChart data={chartData} barCategoryGap={12}>
+            <ResponsiveContainer width="100%" height={560}>
+              <BarChart data={chartData} barCategoryGap={8}>
                 <CartesianGrid strokeDasharray="2 2" stroke="var(--border)" xAxisId="0" yAxisId="0" />
-                <XAxis xAxisId="0" dataKey="palette" tick={{ fill: 'var(--text-muted)', fontSize: 10 }} angle={-35} textAnchor="end" height={60} />
+                <XAxis xAxisId="0" dataKey="palette" tick={{ fill: 'var(--text-muted)', fontSize: 9 }} angle={-45} textAnchor="end" height={80} interval={0} />
                 <YAxis yAxisId="0" domain={[0, 10]} tick={{ fill: 'var(--text-muted)', fontSize: 12 }} />
                 <Tooltip 
                   contentStyle={{ 
