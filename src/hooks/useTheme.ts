@@ -1,16 +1,17 @@
 import { useCallback, useEffect, useState } from 'react';
 import type { PaletteKey } from '../types';
 import { palettes } from '../data';
+import { readString, writeString } from '../utils/storage';
 
 export function useTheme(initialPalette: PaletteKey = 'calm') {
   const [isDark, setIsDark] = useState<boolean>(() => {
-    const saved = localStorage.getItem('theme');
+    const saved = readString('theme');
     if (saved) return saved === 'dark';
     return window.matchMedia('(prefers-color-scheme: dark)').matches;
   });
 
   const [currentPaletteKey, setCurrentPaletteKey] = useState<PaletteKey>(() => {
-    const saved = localStorage.getItem('palette') as PaletteKey;
+    const saved = readString('palette') as PaletteKey | null;
     return saved && palettes[saved] ? saved : initialPalette;
   });
 
@@ -24,8 +25,8 @@ export function useTheme(initialPalette: PaletteKey = 'calm') {
     });
 
     root.classList.toggle('dark', dark);
-    localStorage.setItem('theme', dark ? 'dark' : 'light');
-    localStorage.setItem('palette', paletteKey);
+    writeString('theme', dark ? 'dark' : 'light');
+    writeString('palette', paletteKey);
   }, []);
 
   useEffect(() => {
@@ -35,7 +36,7 @@ export function useTheme(initialPalette: PaletteKey = 'calm') {
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handler = (e: MediaQueryListEvent) => {
-      if (!localStorage.getItem('theme')) setIsDark(e.matches);
+      if (!readString('theme')) setIsDark(e.matches);
     };
     mediaQuery.addEventListener('change', handler);
     return () => mediaQuery.removeEventListener('change', handler);

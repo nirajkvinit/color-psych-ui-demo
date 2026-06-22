@@ -25,7 +25,7 @@ export function ExportMenu({ onExport }: ExportMenuProps) {
   }, []);
 
   return (
-    <div className="relative hidden md:block" ref={ref}>
+    <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen((o) => !o)}
         className="btn btn-secondary flex items-center gap-2 text-xs"

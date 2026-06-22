@@ -45,6 +45,8 @@ export function Header({
               <button
                 key={key}
                 onClick={() => onSelectPalette(key)}
+                title={palettes[key].name}
+                aria-label={palettes[key].name}
                 className={`px-3 py-1.5 rounded-3xl text-xs font-medium transition-all whitespace-nowrap shrink-0 ${
                   isActive
                     ? 'accent-bg text-[var(--accent-foreground)] shadow'

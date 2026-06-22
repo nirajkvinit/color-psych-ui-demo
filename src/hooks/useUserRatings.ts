@@ -1,11 +1,13 @@
 import { useCallback, useState } from 'react';
 import type { PaletteKey, UserRating } from '../types';
+import { readJson, writeJson } from '../utils/storage';
+
+const STORAGE_KEY = 'userRatings';
 
 export function useUserRatings() {
-  const [userRatings, setUserRatings] = useState<UserRating[]>(() => {
-    const saved = localStorage.getItem('userRatings');
-    return saved ? JSON.parse(saved) : [];
-  });
+  const [userRatings, setUserRatings] = useState<UserRating[]>(() =>
+    readJson<UserRating[]>(STORAGE_KEY, [], (v): v is UserRating[] => Array.isArray(v)),
+  );
 
   const submitRating = useCallback(
     (palette: PaletteKey, calmness: number, premium: number) => {
@@ -17,7 +19,7 @@ export function useUserRatings() {
       };
       const updated = [...userRatings, newRating];
       setUserRatings(updated);
-      localStorage.setItem('userRatings', JSON.stringify(updated));
+      writeJson(STORAGE_KEY, updated);
       return newRating;
     },
     [userRatings],

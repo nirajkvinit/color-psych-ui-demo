@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import type { PaletteDefinition } from '../types';
+import { useEscapeKey } from '../hooks/useEscapeKey';
 
 interface FeedbackModalProps {
   palette: PaletteDefinition;
@@ -20,6 +21,7 @@ export function FeedbackModal({
   onSubmit,
   onClose,
 }: FeedbackModalProps) {
+  useEscapeKey(onClose);
   return (
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-6"

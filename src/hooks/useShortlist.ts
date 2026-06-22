@@ -1,28 +1,32 @@
 import { useCallback, useState } from 'react';
+import { toast } from 'sonner';
 import type { PaletteKey } from '../types';
+import { readJson, writeJson } from '../utils/storage';
 
 const STORAGE_KEY = 'paletteShortlist';
+export const MAX_SHORTLIST = 5;
 
 export function useShortlist() {
-  const [shortlist, setShortlist] = useState<PaletteKey[]>(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    return saved ? JSON.parse(saved) : [];
-  });
+  const [shortlist, setShortlist] = useState<PaletteKey[]>(() =>
+    readJson<PaletteKey[]>(STORAGE_KEY, [], (v): v is PaletteKey[] => Array.isArray(v)),
+  );
 
   const persist = useCallback((next: PaletteKey[]) => {
     setShortlist(next);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+    writeJson(STORAGE_KEY, next);
   }, []);
 
   const toggleShortlist = useCallback(
     (key: PaletteKey) => {
-      persist(
-        shortlist.includes(key)
-          ? shortlist.filter((k) => k !== key)
-          : shortlist.length < 5
-            ? [...shortlist, key]
-            : shortlist,
-      );
+      if (shortlist.includes(key)) {
+        persist(shortlist.filter((k) => k !== key));
+      } else if (shortlist.length < MAX_SHORTLIST) {
+        persist([...shortlist, key]);
+      } else {
+        toast.error(`Shortlist is full (max ${MAX_SHORTLIST})`, {
+          description: 'Remove a palette before adding another.',
+        });
+      }
     },
     [shortlist, persist],
   );

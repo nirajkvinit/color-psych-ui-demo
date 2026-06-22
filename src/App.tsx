@@ -110,8 +110,14 @@ const App: React.FC = () => {
 
   const handleExport = async (format: 'css' | 'json' | 'tailwind') => {
     const content = exportTheme(currentPalette, currentPaletteKey, isDark, format);
-    await navigator.clipboard.writeText(content);
-    toast.success(`Exported as ${format.toUpperCase()}`, { description: 'Copied to clipboard.' });
+    try {
+      await navigator.clipboard.writeText(content);
+      toast.success(`Exported as ${format.toUpperCase()}`, { description: 'Copied to clipboard.' });
+    } catch {
+      toast.error('Could not copy to clipboard', {
+        description: 'Clipboard access needs a secure (https) context.',
+      });
+    }
   };
 
   const handleSubmitFeedback = () => {

@@ -30,7 +30,9 @@ const TOKEN_PAIRS: Array<{ pair: string; fg: string; bg: string; minRatio: numbe
   { pair: 'text-muted on bg', fg: '--text-muted', bg: '--bg', minRatio: 4.5 },
   { pair: 'text on surface', fg: '--text', bg: '--surface', minRatio: 4.5 },
   { pair: 'text-muted on surface', fg: '--text-muted', bg: '--surface', minRatio: 4.5 },
-  { pair: 'accent on surface (CTA)', fg: '--accent', bg: '--surface', minRatio: 3 },
+  // Accent is a brand/fill color; legible accent *text* uses the derived --accent-text token.
+  { pair: 'accent-text on bg', fg: '--accent-text', bg: '--bg', minRatio: 4.5 },
+  { pair: 'accent-text on surface', fg: '--accent-text', bg: '--surface', minRatio: 4.5 },
   { pair: 'accent-foreground on accent', fg: '--accent-foreground', bg: '--accent', minRatio: 4.5 },
 ];
 

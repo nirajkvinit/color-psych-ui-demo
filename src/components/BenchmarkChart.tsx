@@ -7,6 +7,8 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
+  ReferenceLine,
+  ReferenceArea,
   ZAxis,
   Cell,
 } from 'recharts';
@@ -76,6 +78,23 @@ export function BenchmarkChart({ currentKey, onSelectPalette }: BenchmarkChartPr
           <ResponsiveContainer width="100%" height={420}>
             <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 10 }}>
               <CartesianGrid strokeDasharray="2 2" stroke="var(--border)" />
+              {/* Quadrant guides: top-right = high calm + high premium ("ideal") */}
+              <ReferenceArea
+                x1={8}
+                x2={10}
+                y1={8}
+                y2={10}
+                fill="var(--accent)"
+                fillOpacity={0.06}
+                ifOverflow="hidden"
+              />
+              <ReferenceLine x={8} stroke="var(--border)" strokeDasharray="4 4" />
+              <ReferenceLine
+                y={8}
+                stroke="var(--border)"
+                strokeDasharray="4 4"
+                label={{ value: 'Calm + Premium ↗', position: 'insideTopRight', fill: 'var(--text-muted)', fontSize: 10 }}
+              />
               <XAxis
                 type="number"
                 dataKey="calmness"
@@ -116,9 +135,10 @@ export function BenchmarkChart({ currentKey, onSelectPalette }: BenchmarkChartPr
                   <Cell
                     key={entry.key}
                     fill={entry.key === currentKey ? 'var(--accent-light)' : 'var(--accent)'}
-                    opacity={entry.key === currentKey ? 1 : 0.65}
-                    stroke={entry.key === currentKey ? 'var(--text)' : 'none'}
-                    strokeWidth={entry.key === currentKey ? 2 : 0}
+                    opacity={entry.key === currentKey ? 1 : 0.7}
+                    // Always stroke so bright/low-contrast accents stay visible against the surface.
+                    stroke={entry.key === currentKey ? 'var(--text)' : 'var(--border)'}
+                    strokeWidth={entry.key === currentKey ? 2 : 1}
                   />
                 ))}
               </Scatter>

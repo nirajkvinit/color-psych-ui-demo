@@ -10,13 +10,14 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--surface': "#ffffff",
       '--surface-2': "#f1f5f9",
       '--text': "#0f172a",
-      '--text-muted': "#64748b",
+      '--text-muted': "#627288",
       '--border': "#e2e8f0",
       '--accent': "#0f766e",
       '--accent-hover': "#115e59",
       '--accent-light': "#14b8a6",
       '--accent-foreground': "#ffffff",
-      '--accent-rgb': "15, 118, 110"
+      '--accent-rgb': "15, 118, 110",
+      '--accent-text': "#0f766e"
     },
     dark: {
       '--bg': "#020617",
@@ -29,7 +30,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#0d9488",
       '--accent-light': "#5eead4",
       '--accent-foreground': "#0f172a",
-      '--accent-rgb': "20, 184, 166"
+      '--accent-rgb': "20, 184, 166",
+      '--accent-text': "#14b8a6"
     }
   },
   warm: {
@@ -47,7 +49,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#92400e",
       '--accent-light': "#d97706",
       '--accent-foreground': "#ffffff",
-      '--accent-rgb': "180, 83, 9"
+      '--accent-rgb': "180, 83, 9",
+      '--accent-text': "#b45309"
     },
     dark: {
       '--bg': "#1c1917",
@@ -60,7 +63,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#d97706",
       '--accent-light': "#fbbf24",
       '--accent-foreground': "#1c1917",
-      '--accent-rgb': "245, 158, 11"
+      '--accent-rgb': "245, 158, 11",
+      '--accent-text': "#f59e0b"
     }
   },
   verdant: {
@@ -78,7 +82,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#14532d",
       '--accent-light': "#22c55e",
       '--accent-foreground': "#ffffff",
-      '--accent-rgb': "22, 101, 52"
+      '--accent-rgb': "22, 101, 52",
+      '--accent-text': "#166534"
     },
     dark: {
       '--bg': "#052e16",
@@ -91,7 +96,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#22c55e",
       '--accent-light': "#86efac",
       '--accent-foreground': "#052e16",
-      '--accent-rgb': "74, 222, 128"
+      '--accent-rgb': "74, 222, 128",
+      '--accent-text': "#4ade80"
     }
   },
   lumina: {
@@ -109,7 +115,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#5b21b6",
       '--accent-light': "#a78bfa",
       '--accent-foreground': "#ffffff",
-      '--accent-rgb': "109, 40, 217"
+      '--accent-rgb': "109, 40, 217",
+      '--accent-text': "#6d28d9"
     },
     dark: {
       '--bg': "#1e1135",
@@ -122,7 +129,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#8b5cf6",
       '--accent-light': "#c4b5fd",
       '--accent-foreground': "#1e1135",
-      '--accent-rgb': "167, 139, 250"
+      '--accent-rgb': "167, 139, 250",
+      '--accent-text': "#a78bfa"
     }
   },
   navy: {
@@ -140,7 +148,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#152a45",
       '--accent-light': "#2d5a8e",
       '--accent-foreground': "#ffffff",
-      '--accent-rgb': "30, 58, 95"
+      '--accent-rgb': "30, 58, 95",
+      '--accent-text': "#1e3a5f"
     },
     dark: {
       '--bg': "#0a1628",
@@ -149,11 +158,12 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--text': "#e8eef4",
       '--text-muted': "#8ba4c4",
       '--border': "#2d5a8e",
-      '--accent': "#4777b2",
+      '--accent': "#4a7ab5",
       '--accent-hover': "#3a6a9f",
       '--accent-light': "#6a9ad5",
-      '--accent-foreground': "#ffffff",
-      '--accent-rgb': "74, 122, 181"
+      '--accent-foreground': "#000000",
+      '--accent-rgb': "74, 122, 181",
+      '--accent-text': "#6e95c4"
     }
   },
   slate: {
@@ -165,13 +175,14 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--surface': "#ffffff",
       '--surface-2': "#f1f5f9",
       '--text': "#1e293b",
-      '--text-muted': "#64748b",
+      '--text-muted': "#627288",
       '--border': "#cbd5e1",
       '--accent': "#475569",
       '--accent-hover': "#334155",
       '--accent-light': "#64748b",
       '--accent-foreground': "#ffffff",
-      '--accent-rgb': "71, 85, 105"
+      '--accent-rgb': "71, 85, 105",
+      '--accent-text': "#475569"
     },
     dark: {
       '--bg': "#0f172a",
@@ -184,7 +195,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#cbd5e1",
       '--accent-light': "#cbd5e1",
       '--accent-foreground': "#0f172a",
-      '--accent-rgb': "148, 163, 184"
+      '--accent-rgb': "148, 163, 184",
+      '--accent-text': "#94a3b8"
     }
   },
   charcoal: {
@@ -202,7 +214,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#78590a",
       '--accent-light': "#b8860b",
       '--accent-foreground': "#ffffff",
-      '--accent-rgb': "146, 112, 12"
+      '--accent-rgb': "146, 112, 12",
+      '--accent-text': "#8d6c0c"
     },
     dark: {
       '--bg': "#1c1917",
@@ -215,7 +228,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#b8860b",
       '--accent-light': "#f0c040",
       '--accent-foreground': "#1c1917",
-      '--accent-rgb': "212, 160, 18"
+      '--accent-rgb': "212, 160, 18",
+      '--accent-text': "#d4a012"
     }
   },
   terracotta: {
@@ -233,7 +247,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#9a3412",
       '--accent-light': "#ea580c",
       '--accent-foreground': "#ffffff",
-      '--accent-rgb': "194, 65, 12"
+      '--accent-rgb': "194, 65, 12",
+      '--accent-text': "#c2410c"
     },
     dark: {
       '--bg': "#431407",
@@ -246,7 +261,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#f97316",
       '--accent-light': "#fdba74",
       '--accent-foreground': "#431407",
-      '--accent-rgb': "251, 146, 60"
+      '--accent-rgb': "251, 146, 60",
+      '--accent-text': "#fca055"
     }
   },
   honey: {
@@ -260,11 +276,12 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--text': "#134e4a",
       '--text-muted': "#00816b",
       '--border': "#99f6e4",
-      '--accent': "#bf8b00",
+      '--accent': "#d4a012",
       '--accent-hover': "#b8860b",
       '--accent-light': "#f0c040",
       '--accent-foreground': "#0f172a",
-      '--accent-rgb': "212, 160, 18"
+      '--accent-rgb': "212, 160, 18",
+      '--accent-text': "#8d6b0c"
     },
     dark: {
       '--bg': "#134e4a",
@@ -277,7 +294,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#d4a012",
       '--accent-light': "#fde68a",
       '--accent-foreground': "#134e4a",
-      '--accent-rgb': "240, 192, 64"
+      '--accent-rgb': "240, 192, 64",
+      '--accent-text': "#f1c349"
     }
   },
   cloud: {
@@ -291,11 +309,12 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--text': "#3d3a33",
       '--text-muted': "#736d60",
       '--border': "#d4cfc4",
-      '--accent': "#65768d",
+      '--accent': "#6b7c93",
       '--accent-hover': "#556378",
       '--accent-light': "#8b9dc3",
-      '--accent-foreground': "#ffffff",
-      '--accent-rgb': "107, 124, 147"
+      '--accent-foreground': "#000000",
+      '--accent-rgb': "107, 124, 147",
+      '--accent-text': "#607084"
     },
     dark: {
       '--bg': "#2a2820",
@@ -308,7 +327,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#6b7c93",
       '--accent-light': "#a8b8d4",
       '--accent-foreground': "#2a2820",
-      '--accent-rgb': "139, 157, 195"
+      '--accent-rgb': "139, 157, 195",
+      '--accent-text': "#95a6c8"
     }
   },
   transformative: {
@@ -326,7 +346,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#0a5555",
       '--accent-light': "#14a3a3",
       '--accent-foreground': "#ffffff",
-      '--accent-rgb': "13, 110, 110"
+      '--accent-rgb': "13, 110, 110",
+      '--accent-text': "#0d6e6e"
     },
     dark: {
       '--bg': "#0a2e2e",
@@ -339,7 +360,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#26c6da",
       '--accent-light': "#80deea",
       '--accent-foreground': "#0a2e2e",
-      '--accent-rgb': "77, 208, 225"
+      '--accent-rgb': "77, 208, 225",
+      '--accent-text': "#4dd0e1"
     }
   },
   twilight: {
@@ -357,7 +379,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#1e1b4b",
       '--accent-light': "#8c7ae6",
       '--accent-foreground': "#ffffff",
-      '--accent-rgb': "44, 42, 114"
+      '--accent-rgb': "44, 42, 114",
+      '--accent-text': "#2c2a72"
     },
     dark: {
       '--bg': "#12101f",
@@ -370,7 +393,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#7c6ad6",
       '--accent-light': "#a99af0",
       '--accent-foreground': "#12101f",
-      '--accent-rgb': "140, 122, 230"
+      '--accent-rgb': "140, 122, 230",
+      '--accent-text': "#8c7ae6"
     }
   },
   oatmeal: {
@@ -388,7 +412,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#1a1a1a",
       '--accent-light': "#4a4a4a",
       '--accent-foreground': "#faf7f2",
-      '--accent-rgb': "43, 43, 43"
+      '--accent-rgb': "43, 43, 43",
+      '--accent-text': "#2b2b2b"
     },
     dark: {
       '--bg': "#1a1a1a",
@@ -401,7 +426,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#c8c1b7",
       '--accent-light': "#e8e0d4",
       '--accent-foreground': "#1a1a1a",
-      '--accent-rgb': "216, 209, 199"
+      '--accent-rgb': "216, 209, 199",
+      '--accent-text': "#d8d1c7"
     }
   },
   sagebrush: {
@@ -419,7 +445,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#4a5b3a",
       '--accent-light': "#7a8b6a",
       '--accent-foreground': "#ffffff",
-      '--accent-rgb': "90, 107, 74"
+      '--accent-rgb': "90, 107, 74",
+      '--accent-text': "#5a6b4a"
     },
     dark: {
       '--bg': "#1a2018",
@@ -432,7 +459,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#8a9b7a",
       '--accent-light': "#b0c0a0",
       '--accent-foreground': "#1a2018",
-      '--accent-rgb': "154, 171, 138"
+      '--accent-rgb': "154, 171, 138",
+      '--accent-text': "#9aab8a"
     }
   },
   arctic: {
@@ -450,7 +478,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#2a6c95",
       '--accent-light': "#5a9cc5",
       '--accent-foreground': "#ffffff",
-      '--accent-rgb': "58, 124, 165"
+      '--accent-rgb': "58, 124, 165",
+      '--accent-text': "#36739a"
     },
     dark: {
       '--bg': "#0f1a24",
@@ -463,7 +492,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#5aa4c4",
       '--accent-light': "#8ac8e4",
       '--accent-foreground': "#0f1a24",
-      '--accent-rgb': "106, 180, 212"
+      '--accent-rgb': "106, 180, 212",
+      '--accent-text': "#6ab4d4"
     }
   },
   evergreen: {
@@ -481,7 +511,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#093a2e",
       '--accent-light': "#1f7a5f",
       '--accent-foreground': "#ffffff",
-      '--accent-rgb': "13, 76, 60"
+      '--accent-rgb': "13, 76, 60",
+      '--accent-text': "#0d4c3c"
     },
     dark: {
       '--bg': "#0a1410",
@@ -494,7 +525,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#2a8a67",
       '--accent-light': "#5fc79e",
       '--accent-foreground': "#06120d",
-      '--accent-rgb': "52, 163, 122"
+      '--accent-rgb': "52, 163, 122",
+      '--accent-text': "#34a37a"
     }
   },
   aubergine: {
@@ -512,7 +544,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#41203d",
       '--accent-light': "#7d4a76",
       '--accent-foreground': "#ffffff",
-      '--accent-rgb': "81, 42, 77"
+      '--accent-rgb': "81, 42, 77",
+      '--accent-text': "#512a4d"
     },
     dark: {
       '--bg': "#130d14",
@@ -525,7 +558,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#74436e",
       '--accent-light': "#b884b0",
       '--accent-foreground': "#ffffff",
-      '--accent-rgb': "138, 79, 130"
+      '--accent-rgb': "138, 79, 130",
+      '--accent-text': "#ab6ca2"
     }
   },
   brass: {
@@ -543,7 +577,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#714811",
       '--accent-light': "#c89b3f",
       '--accent-foreground': "#ffffff",
-      '--accent-rgb': "138, 90, 22"
+      '--accent-rgb': "138, 90, 22",
+      '--accent-text': "#8a5a16"
     },
     dark: {
       '--bg': "#0b130f",
@@ -556,7 +591,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#b78a36",
       '--accent-light': "#e3c074",
       '--accent-foreground': "#0b130f",
-      '--accent-rgb': "201, 154, 69"
+      '--accent-rgb': "201, 154, 69",
+      '--accent-text': "#c99a45"
     }
   },
   oxblood: {
@@ -574,7 +610,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#561a26",
       '--accent-light': "#9a3344",
       '--accent-foreground': "#ffffff",
-      '--accent-rgb': "107, 34, 48"
+      '--accent-rgb': "107, 34, 48",
+      '--accent-text': "#6b2230"
     },
     dark: {
       '--bg': "#120c0d",
@@ -583,11 +620,12 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--text': "#f1e9ea",
       '--text-muted': "#ad9398",
       '--border': "#3a2329",
-      '--accent': "#ab3d4b",
+      '--accent': "#a83a48",
       '--accent-hover': "#8f2f3c",
       '--accent-light': "#c8616d",
       '--accent-foreground': "#ffffff",
-      '--accent-rgb': "168, 58, 72"
+      '--accent-rgb': "168, 58, 72",
+      '--accent-text': "#c8616e"
     }
   },
   copper: {
@@ -599,13 +637,14 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--surface': "#ffffff",
       '--surface-2': "#f0e8dc",
       '--text': "#3d2e1f",
-      '--text-muted': "#856d4f",
+      '--text-muted': "#826a4d",
       '--border': "#d4c4a8",
       '--accent': "#b87333",
       '--accent-hover': "#9a5f28",
       '--accent-light': "#d4944a",
       '--accent-foreground': "#0f172a",
-      '--accent-rgb': "184, 115, 51"
+      '--accent-rgb': "184, 115, 51",
+      '--accent-text': "#9c622b"
     },
     dark: {
       '--bg': "#2a1f14",
@@ -618,7 +657,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#b87333",
       '--accent-light': "#e8b06a",
       '--accent-foreground': "#2a1f14",
-      '--accent-rgb': "212, 148, 74"
+      '--accent-rgb': "212, 148, 74",
+      '--accent-text': "#d4944a"
     }
   },
   apricot: {
@@ -632,11 +672,12 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--text': "#4a2c1a",
       '--text-muted': "#946544",
       '--border': "#f0c8a8",
-      '--accent': "#ce7e54",
+      '--accent': "#d4845a",
       '--accent-hover': "#b86e44",
       '--accent-light': "#e8a87c",
       '--accent-foreground': "#0f172a",
-      '--accent-rgb': "212, 132, 90"
+      '--accent-rgb': "212, 132, 90",
+      '--accent-text': "#ab582d"
     },
     dark: {
       '--bg': "#3a2218",
@@ -649,7 +690,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#d4845a",
       '--accent-light': "#f0c0a0",
       '--accent-foreground': "#3a2218",
-      '--accent-rgb': "232, 168, 124"
+      '--accent-rgb': "232, 168, 124",
+      '--accent-text': "#e8a87c"
     }
   },
   sandstone: {
@@ -667,7 +709,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#886848",
       '--accent-light': "#b89878",
       '--accent-foreground': "#0f172a",
-      '--accent-rgb': "160, 128, 96"
+      '--accent-rgb': "160, 128, 96",
+      '--accent-text': "#80674d"
     },
     dark: {
       '--bg': "#2a2620",
@@ -680,7 +723,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#b09872",
       '--accent-light': "#d4b898",
       '--accent-foreground': "#2a2620",
-      '--accent-rgb': "196, 168, 130"
+      '--accent-rgb': "196, 168, 130",
+      '--accent-text': "#c4a882"
     }
   },
   saffron: {
@@ -694,11 +738,12 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--text': "#451a03",
       '--text-muted': "#8f6d09",
       '--border': "#fde68a",
-      '--accent': "#dc780e",
+      '--accent': "#e8841a",
       '--accent-hover': "#c46e0a",
       '--accent-light': "#f0a030",
       '--accent-foreground': "#0f172a",
-      '--accent-rgb': "232, 132, 26"
+      '--accent-rgb': "232, 132, 26",
+      '--accent-text': "#aa6011"
     },
     dark: {
       '--bg': "#451a03",
@@ -711,7 +756,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#e8841a",
       '--accent-light': "#fbbf24",
       '--accent-foreground': "#451a03",
-      '--accent-rgb': "240, 160, 48"
+      '--accent-rgb': "240, 160, 48",
+      '--accent-text': "#f2ab48"
     }
   },
   rosewood: {
@@ -729,7 +775,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#642d2d",
       '--accent-light': "#9a5a5a",
       '--accent-foreground': "#ffffff",
-      '--accent-rgb': "124, 61, 61"
+      '--accent-rgb': "124, 61, 61",
+      '--accent-text': "#7c3d3d"
     },
     dark: {
       '--bg': "#2a1414",
@@ -742,7 +789,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#b06a6a",
       '--accent-light': "#d49a9a",
       '--accent-foreground': "#2a1414",
-      '--accent-rgb': "196, 122, 122"
+      '--accent-rgb': "196, 122, 122",
+      '--accent-text': "#c67e7e"
     }
   },
   heritageblue: {
@@ -760,7 +808,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#1558a0",
       '--accent-light': "#4a90d9",
       '--accent-foreground': "#ffffff",
-      '--accent-rgb': "31, 112, 193"
+      '--accent-rgb': "31, 112, 193",
+      '--accent-text': "#1f70c1"
     },
     dark: {
       '--bg': "#0a1a2e",
@@ -773,7 +822,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#3a80c9",
       '--accent-light': "#6ab0e9",
       '--accent-foreground': "#0a1a2e",
-      '--accent-rgb': "74, 144, 217"
+      '--accent-rgb': "74, 144, 217",
+      '--accent-text': "#4e93da"
     }
   },
   powderera: {
@@ -787,11 +837,12 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--text': "#1a3a52",
       '--text-muted': "#427298",
       '--border': "#b0d4ec",
-      '--accent': "#5499ce",
+      '--accent': "#5a9fd4",
       '--accent-hover': "#4088c0",
       '--accent-light': "#7ab8e4",
       '--accent-foreground': "#0f172a",
-      '--accent-rgb': "90, 159, 212"
+      '--accent-rgb': "90, 159, 212",
+      '--accent-text': "#2d74ab"
     },
     dark: {
       '--bg': "#142838",
@@ -804,7 +855,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#5a9fd4",
       '--accent-light': "#9ad0f4",
       '--accent-foreground': "#142838",
-      '--accent-rgb': "122, 184, 228"
+      '--accent-rgb': "122, 184, 228",
+      '--accent-text': "#7ab8e4"
     }
   },
   modernist: {
@@ -822,7 +874,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#0f2847",
       '--accent-light': "#2a4a7d",
       '--accent-foreground': "#ffffff",
-      '--accent-rgb': "26, 54, 93"
+      '--accent-rgb': "26, 54, 93",
+      '--accent-text': "#1a365d"
     },
     dark: {
       '--bg': "#0f1a28",
@@ -835,7 +888,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#4a7aa8",
       '--accent-light': "#7aaad0",
       '--accent-foreground': "#0f1a28",
-      '--accent-rgb': "90, 138, 184"
+      '--accent-rgb': "90, 138, 184",
+      '--accent-text': "#6894be"
     }
   },
   huntergreen: {
@@ -853,7 +907,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#2a4a2f",
       '--accent-light': "#4a7a50",
       '--accent-foreground': "#ffffff",
-      '--accent-rgb': "53, 94, 59"
+      '--accent-rgb': "53, 94, 59",
+      '--accent-text': "#355e3b"
     },
     dark: {
       '--bg': "#0f1a10",
@@ -865,8 +920,9 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent': "#5a8a60",
       '--accent-hover': "#4a7a50",
       '--accent-light': "#7aaa80",
-      '--accent-foreground': "#0a1628",
-      '--accent-rgb': "90, 138, 96"
+      '--accent-foreground': "#000000",
+      '--accent-rgb': "90, 138, 96",
+      '--accent-text': "#6a9e70"
     }
   },
   tealoffice: {
@@ -884,7 +940,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#2a5f6e",
       '--accent-light': "#4a8a9a",
       '--accent-foreground': "#ffffff",
-      '--accent-rgb': "54, 117, 136"
+      '--accent-rgb': "54, 117, 136",
+      '--accent-text': "#367588"
     },
     dark: {
       '--bg': "#141f1f",
@@ -897,7 +954,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#4a9aaa",
       '--accent-light': "#7acad0",
       '--accent-foreground': "#141f1f",
-      '--accent-rgb': "90, 170, 186"
+      '--accent-rgb': "90, 170, 186",
+      '--accent-text': "#5aaaba"
     }
   },
   goldenage: {
@@ -911,11 +969,12 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--text': "#3a2800",
       '--text-muted': "#8a7020",
       '--border': "#f0e0a0",
-      '--accent': "#c78700",
+      '--accent': "#e8a800",
       '--accent-hover': "#c89000",
       '--accent-light': "#ffc820",
       '--accent-foreground': "#3a2800",
-      '--accent-rgb': "232, 168, 0"
+      '--accent-rgb': "232, 168, 0",
+      '--accent-text': "#966d00"
     },
     dark: {
       '--bg': "#2a2000",
@@ -928,7 +987,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#e8a800",
       '--accent-light': "#ffd840",
       '--accent-foreground': "#2a2000",
-      '--accent-rgb': "255, 200, 32"
+      '--accent-rgb': "255, 200, 32",
+      '--accent-text': "#ffc820"
     }
   },
   heritagered: {
@@ -946,7 +1006,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#a00e28",
       '--accent-light': "#e03050",
       '--accent-foreground': "#ffffff",
-      '--accent-rgb': "196, 18, 48"
+      '--accent-rgb': "196, 18, 48",
+      '--accent-text': "#c41230"
     },
     dark: {
       '--bg': "#2a0808",
@@ -955,11 +1016,12 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--text': "#ffe8e8",
       '--text-muted': "#e08080",
       '--border': "#9a3a3a",
-      '--accent': "#dd2d4d",
+      '--accent': "#e03050",
       '--accent-hover': "#c41230",
       '--accent-light': "#f05070",
-      '--accent-foreground': "#ffffff",
-      '--accent-rgb': "224, 48, 80"
+      '--accent-foreground': "#000000",
+      '--accent-rgb': "224, 48, 80",
+      '--accent-text': "#e76179"
     }
   },
   kodakwarm: {
@@ -973,11 +1035,12 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--text': "#3a3000",
       '--text-muted': "#84721a",
       '--border': "#f0e080",
-      '--accent': "#c08700",
+      '--accent': "#ffc600",
       '--accent-hover': "#d4a800",
       '--accent-light': "#ffd830",
       '--accent-foreground': "#0f172a",
-      '--accent-rgb': "255, 198, 0"
+      '--accent-rgb': "255, 198, 0",
+      '--accent-text': "#8f6f00"
     },
     dark: {
       '--bg': "#2a2400",
@@ -990,7 +1053,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#ffc600",
       '--accent-light': "#ffe850",
       '--accent-foreground': "#2a2400",
-      '--accent-rgb': "255, 216, 48"
+      '--accent-rgb': "255, 216, 48",
+      '--accent-text': "#ffd830"
     }
   },
   harvestera: {
@@ -1002,13 +1066,14 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--surface': "#ffffff",
       '--surface-2': "#f0e8d0",
       '--text': "#3a3018",
-      '--text-muted': "#816f47",
+      '--text-muted': "#7e6c45",
       '--border': "#d8c8a0",
-      '--accent': "#b68e1e",
+      '--accent': "#c8a030",
       '--accent-hover': "#a88820",
       '--accent-light': "#e0b848",
       '--accent-foreground': "#0f172a",
-      '--accent-rgb': "200, 160, 48"
+      '--accent-rgb': "200, 160, 48",
+      '--accent-text': "#866b20"
     },
     dark: {
       '--bg': "#2a2210",
@@ -1021,7 +1086,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#c8a030",
       '--accent-light': "#f0d060",
       '--accent-foreground': "#2a2210",
-      '--accent-rgb': "224, 184, 72"
+      '--accent-rgb': "224, 184, 72",
+      '--accent-text': "#e0b848"
     }
   },
   executive: {
@@ -1039,7 +1105,8 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-hover': "#5a2028",
       '--accent-light': "#9a4a55",
       '--accent-foreground': "#ffffff",
-      '--accent-rgb': "114, 47, 55"
+      '--accent-rgb': "114, 47, 55",
+      '--accent-text': "#722f37"
     },
     dark: {
       '--bg': "#1a0810",
@@ -1048,11 +1115,12 @@ export const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--text': "#f0e0e4",
       '--text-muted': "#c08090",
       '--border': "#7a4050",
-      '--accent': "#b55765",
+      '--accent': "#b85a68",
       '--accent-hover': "#9a4a55",
       '--accent-light': "#d08090",
-      '--accent-foreground': "#ffffff",
-      '--accent-rgb': "184, 90, 104"
+      '--accent-foreground': "#000000",
+      '--accent-rgb': "184, 90, 104",
+      '--accent-text': "#c16f7c"
     }
   }
 };

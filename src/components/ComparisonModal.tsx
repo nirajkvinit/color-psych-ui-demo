@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import type { PaletteKey } from '../types';
 import { palettes, paletteKeys } from '../data';
 import { PalettePreview } from './PalettePreview';
+import { useEscapeKey } from '../hooks/useEscapeKey';
 
 interface ComparisonModalProps {
   compareA: PaletteKey;
@@ -22,6 +23,7 @@ export function ComparisonModal({
   onClose,
   paletteOptions = paletteKeys,
 }: ComparisonModalProps) {
+  useEscapeKey(onClose);
   return (
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4 md:p-6"

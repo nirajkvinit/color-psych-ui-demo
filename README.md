@@ -11,13 +11,14 @@ A premium studio-quality demo exploring 34 calm & warm corporate palettes, dark/
 - **Shortlist (max 5)** — star finalists and compare your shortlist
 - **Side-by-side comparison** — light + dark previews with curated scores
 - **Context presets** — Fintech, AI Tool, Indian SMB, and General UI chrome
-- **Structured study mode** — 5-round forced-choice preference test
+- **Structured study mode** — balanced preference tournament (each candidate shown ~3×, then ranked)
 - **Accessibility panel** — live WCAG AA contrast checker per palette/mode
+- **Brand-safe accent tokens** — `--accent` keeps the true brand color; a derived `--accent-text` guarantees ≥4.5:1 for accent-colored text
 - **Export** — CSS variables, JSON tokens, or Tailwind theme (clipboard)
 - **Benchmark scatter chart** — calmness × premium quadrant (lazy-loaded)
 - **Local ratings + CSV export** — contribute perception data stored in browser
-- **Keyboard navigation** — `←` `→` to cycle palettes
-- **Automated contrast CI** — `pnpm audit:contrast` validates all 408 token pairs
+- **Keyboard navigation** — `←` `→` to cycle palettes (vertical scroll preserved)
+- **Automated contrast CI** — `pnpm audit:contrast` validates 476 token pairs (incl. accent text)
 
 ## Quick Start
 
@@ -37,8 +38,9 @@ src/
   components/    # UI modules (grid, lab, chart, modals, a11y)
   utils/         # contrast audit, theme export
 scripts/
-  audit-contrast.mjs   # CI contrast validation
-  fix-contrast.mjs     # palette token auto-fixer (dev tool)
+  audit-contrast.mjs   # CI contrast validation (pnpm audit:contrast)
+  fix-contrast.mjs     # derives --accent-text + repairs muted/foreground; never
+                       # mutates brand --accent/--bg (pnpm fix:contrast)
 ```
 
 ## Data Honesty

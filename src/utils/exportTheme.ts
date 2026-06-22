@@ -47,6 +47,7 @@ export function exportTailwindTheme(
   --color-accent-hover: ${token('accent-hover')};
   --color-accent-light: ${token('accent-light')};
   --color-accent-foreground: ${token('accent-foreground')};
+  --color-accent-text: ${token('accent-text')};
 }
 
 // Palette key: ${key}
