@@ -23,12 +23,14 @@ type PaletteKey =
   | 'navy' | 'slate' | 'charcoal' | 'terracotta' | 'honey' | 'cloud'
   | 'transformative' | 'twilight' | 'oatmeal' | 'sagebrush' | 'arctic'
   | 'copper' | 'apricot' | 'sandstone' | 'saffron' | 'rosewood'
+  | 'evergreen' | 'aubergine' | 'brass' | 'oxblood'
   | 'heritageblue' | 'powderera' | 'modernist' | 'huntergreen' | 'tealoffice'
   | 'goldenage' | 'heritagered' | 'kodakwarm' | 'harvestera' | 'executive';
 
 const MODERN_CALM_PALETTES: PaletteKey[] = [
   'calm', 'verdant', 'lumina', 'navy', 'slate', 'cloud',
   'transformative', 'twilight', 'oatmeal', 'sagebrush', 'arctic',
+  'evergreen', 'aubergine',
 ];
 const HISTORICAL_CALM_PALETTES: PaletteKey[] = [
   'heritageblue', 'powderera', 'modernist', 'huntergreen', 'tealoffice',
@@ -36,6 +38,7 @@ const HISTORICAL_CALM_PALETTES: PaletteKey[] = [
 const MODERN_WARM_PALETTES: PaletteKey[] = [
   'warm', 'charcoal', 'terracotta', 'honey',
   'copper', 'apricot', 'sandstone', 'saffron', 'rosewood',
+  'brass', 'oxblood',
 ];
 const HISTORICAL_WARM_PALETTES: PaletteKey[] = [
   'goldenage', 'heritagered', 'kodakwarm', 'harvestera', 'executive',
@@ -515,6 +518,130 @@ const palettes: Record<PaletteKey, PaletteDefinition> = {
       '--accent-light': '#8ac8e4',
       '--accent-foreground': '#0f1a24',
       '--accent-rgb': '106, 180, 212',
+    }
+  },
+  evergreen: {
+    name: "Evergreen Reserve",
+    psych: "Deep British-racing green — the heritage-luxury hue (Harrods, Rolex, Jaguar) that almost no AI brand uses. Deep and desaturated, it reads premium and calm without the eco/wellness cliche of bright sage, and green sits at the eye's focal sweet spot — apt for tools that clean up complexity.",
+    researchNote: "Vacant lane: deep green is essentially absent among AI primaries (the sea-of-sameness is blue, purple, and cream). Premium rests on the robust low-saturation-to-status finding (Zhou 2025, JCR), not on 'green = growth' folklore. Keep it deep — bright green reads bank/eco.",
+    light: {
+      '--bg': '#f4f6f4',
+      '--surface': '#ffffff',
+      '--surface-2': '#e8ece9',
+      '--text': '#10241b',
+      '--text-muted': '#516259',
+      '--border': '#d6ddd8',
+      '--accent': '#0d4c3c',
+      '--accent-hover': '#093a2e',
+      '--accent-light': '#1f7a5f',
+      '--accent-foreground': '#ffffff',
+      '--accent-rgb': '13, 76, 60',
+    },
+    dark: {
+      '--bg': '#0a1410',
+      '--surface': '#0f1f18',
+      '--surface-2': '#172b22',
+      '--text': '#e8efe9',
+      '--text-muted': '#8aa194',
+      '--border': '#26392f',
+      '--accent': '#34a37a',
+      '--accent-hover': '#2a8a67',
+      '--accent-light': '#5fc79e',
+      '--accent-foreground': '#06120d',
+      '--accent-rgb': '52, 163, 122',
+    }
+  },
+  aubergine: {
+    name: "Aubergine Depth",
+    psych: "Deep, grounded aubergine — violet's exclusivity lineage with the earthiness of brown, the opposite read of bright 'AI lavender.' Quiet luxury and sophistication in a lane serious AI brands have left empty.",
+    researchNote: "The intelligent escape from the AI-violet cliche: same heritage, opposite read — but it must stay obviously deep/dark to avoid being lumped with Digital Lavender. Premium via low-saturation and darkness (Zhou 2025), not the weakly-supported 'purple = creativity.'",
+    light: {
+      '--bg': '#f6f4f6',
+      '--surface': '#ffffff',
+      '--surface-2': '#ece7ec',
+      '--text': '#1f1420',
+      '--text-muted': '#665a68',
+      '--border': '#ddd4de',
+      '--accent': '#512a4d',
+      '--accent-hover': '#41203d',
+      '--accent-light': '#7d4a76',
+      '--accent-foreground': '#ffffff',
+      '--accent-rgb': '81, 42, 77',
+    },
+    dark: {
+      '--bg': '#130d14',
+      '--surface': '#1d141f',
+      '--surface-2': '#281b2a',
+      '--text': '#f0e9f1',
+      '--text-muted': '#a594a8',
+      '--border': '#382639',
+      '--accent': '#8a4f82',
+      '--accent-hover': '#74436e',
+      '--accent-light': '#b884b0',
+      '--accent-foreground': '#ffffff',
+      '--accent-rgb': '138, 79, 130',
+    }
+  },
+  brass: {
+    name: "Forest & Brass",
+    psych: "A deep-forest world warmed by a single antique-brass accent — cool field, warm signal. The restrained metallic adds craft and gravitas without the overstimulation of orange CTAs. The most ownable combination here: green identity plus a brass action color.",
+    researchNote: "Mirrors the cool-anchor-plus-warm-accent logic (cf. Honey & Teal) but in a vacant lane. Metallic stays a small accent so it signals craft, not kitsch. Green-plus-brass is absent from AI branding — high distinctiveness.",
+    light: {
+      '--bg': '#f3f5f0',
+      '--surface': '#ffffff',
+      '--surface-2': '#e7ece1',
+      '--text': '#14241b',
+      '--text-muted': '#5a6a5c',
+      '--border': '#d4ddd1',
+      '--accent': '#8a5a16',
+      '--accent-hover': '#714811',
+      '--accent-light': '#c89b3f',
+      '--accent-foreground': '#ffffff',
+      '--accent-rgb': '138, 90, 22',
+    },
+    dark: {
+      '--bg': '#0b130f',
+      '--surface': '#121f18',
+      '--surface-2': '#1b2c23',
+      '--text': '#e9efe8',
+      '--text-muted': '#8ea295',
+      '--border': '#2a3d33',
+      '--accent': '#c99a45',
+      '--accent-hover': '#b78a36',
+      '--accent-light': '#e3c074',
+      '--accent-foreground': '#0b130f',
+      '--accent-rgb': '201, 154, 69',
+    }
+  },
+  oxblood: {
+    name: "Oxblood Reserve",
+    psych: "Deep oxblood/cordovan on a cool neutral ground — the register of law firms, fine bindings, and Bottega Veneta. Signals intellectual rigor and competence that doesn't shout — a strong fit for auditing and hardening messy AI-generated code.",
+    researchNote: "Vacant in AI = maximum distinctiveness; deep and desaturated satisfies low-saturation-to-premium (Zhou 2025). Two honest caveats: oxblood can read tactile-not-digital (counter with crisp modern type and neutral grounds), and it shares hue space with UI error-red (keep brand burgundy separate from functional reds).",
+    light: {
+      '--bg': '#f6f4f3',
+      '--surface': '#ffffff',
+      '--surface-2': '#ece6e5',
+      '--text': '#1f1517',
+      '--text-muted': '#6a5b5d',
+      '--border': '#ddd4d3',
+      '--accent': '#6b2230',
+      '--accent-hover': '#561a26',
+      '--accent-light': '#9a3344',
+      '--accent-foreground': '#ffffff',
+      '--accent-rgb': '107, 34, 48',
+    },
+    dark: {
+      '--bg': '#120c0d',
+      '--surface': '#1c1315',
+      '--surface-2': '#28191c',
+      '--text': '#f1e9ea',
+      '--text-muted': '#ad9398',
+      '--border': '#3a2329',
+      '--accent': '#a83a48',
+      '--accent-hover': '#8f2f3c',
+      '--accent-light': '#c8616d',
+      '--accent-foreground': '#ffffff',
+      '--accent-rgb': '168, 58, 72',
     }
   },
   copper: {
@@ -1015,6 +1142,10 @@ const PALETTE_SCORES: Record<PaletteKey, { calmness: number; premium: number }> 
   kodakwarm: { calmness: 7.1, premium: 7.5 },
   harvestera: { calmness: 7.5, premium: 7.4 },
   executive: { calmness: 7.3, premium: 8.7 },
+  evergreen: { calmness: 9.0, premium: 9.1 },
+  aubergine: { calmness: 8.6, premium: 9.2 },
+  brass: { calmness: 8.2, premium: 9.0 },
+  oxblood: { calmness: 7.6, premium: 9.3 },
 };
 
 const paletteKeys = Object.keys(palettes) as PaletteKey[];
@@ -1365,7 +1496,7 @@ const App: React.FC = () => {
             Test Color Psychology.<br />Craft Premium Calm.
           </h1>
           <p className="text-xl text-[var(--text-muted)] max-w-lg">
-            A live React demo exploring 30 modern & historical corporate calm & warmth palettes, dark/light modes, and studio-quality micro-interactions. 
+            A live React demo exploring 34 modern & historical corporate calm & warmth palettes, dark/light modes, and studio-quality micro-interactions.
             Built to validate emotional impact through real interaction.
           </p>
           <div className="flex flex-wrap gap-3 mt-8">
