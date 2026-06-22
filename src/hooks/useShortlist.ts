@@ -1,30 +1,16 @@
 import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import type { PaletteKey } from '../types';
-import { palettes } from '../data';
 import { readJson, writeJson } from '../utils/storage';
+import { MAX_SHORTLIST, sanitizeShortlist } from '../utils/shortlist';
 
 const STORAGE_KEY = 'paletteShortlist';
-export const MAX_SHORTLIST = 5;
 
-/** Drop unknown/duplicate keys and cap length so corrupt or legacy data can't reach the UI. */
-function sanitize(raw: unknown): PaletteKey[] {
-  if (!Array.isArray(raw)) return [];
-  const seen = new Set<string>();
-  const clean: PaletteKey[] = [];
-  for (const k of raw) {
-    if (typeof k === 'string' && Object.hasOwn(palettes, k) && !seen.has(k)) {
-      seen.add(k);
-      clean.push(k as PaletteKey);
-      if (clean.length >= MAX_SHORTLIST) break;
-    }
-  }
-  return clean;
-}
+export { MAX_SHORTLIST };
 
 export function useShortlist() {
   const [shortlist, setShortlist] = useState<PaletteKey[]>(() =>
-    sanitize(readJson<unknown>(STORAGE_KEY, [])),
+    sanitizeShortlist(readJson<unknown>(STORAGE_KEY, [])),
   );
 
   // Self-heal: write the sanitized list back so any corrupt/legacy value stops lingering.
