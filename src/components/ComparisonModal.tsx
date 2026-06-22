@@ -1,8 +1,10 @@
+import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import type { PaletteKey } from '../types';
 import { palettes, paletteKeys } from '../data';
 import { PalettePreview } from './PalettePreview';
 import { useEscapeKey } from '../hooks/useEscapeKey';
+import { useFocusTrap } from '../hooks/useFocusTrap';
 
 interface ComparisonModalProps {
   compareA: PaletteKey;
@@ -23,15 +25,20 @@ export function ComparisonModal({
   onClose,
   paletteOptions = paletteKeys,
 }: ComparisonModalProps) {
+  const panelRef = useRef<HTMLDivElement>(null);
   useEscapeKey(onClose);
+  useFocusTrap(panelRef);
+
   return (
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4 md:p-6"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
+      aria-labelledby="comparison-title"
     >
       <motion.div
+        ref={panelRef}
         initial={{ opacity: 0, y: 20, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 20, scale: 0.98 }}
@@ -41,12 +48,18 @@ export function ComparisonModal({
       >
         <div className="flex justify-between items-start mb-6">
           <div>
-            <div className="font-semibold text-2xl tracking-tight">Side-by-Side Comparison</div>
+            <div id="comparison-title" className="font-semibold text-2xl tracking-tight">
+              Side-by-Side Comparison
+            </div>
             <p className="text-sm text-[var(--text-muted)]">
               Compare two palettes in light and dark mode before applying
             </p>
           </div>
-          <button onClick={onClose} className="text-[var(--text-muted)] hover:text-[var(--text)] text-2xl leading-none" aria-label="Close">
+          <button
+            onClick={onClose}
+            className="btn btn-ghost p-2 rounded-xl text-2xl leading-none min-w-[2.5rem]"
+            aria-label="Close"
+          >
             ×
           </button>
         </div>
@@ -57,7 +70,7 @@ export function ComparisonModal({
             { label: 'Palette B', key: compareB, onChange: onCompareBChange, btnClass: 'btn-secondary' },
           ].map(({ label, key, onChange, btnClass }) => (
             <div key={label} className="space-y-3">
-              <label className="text-xs uppercase tracking-[2px] text-[var(--text-muted)]">{label}</label>
+              <label className="type-label">{label}</label>
               <select className="input text-sm" value={key} onChange={(e) => onChange(e.target.value as PaletteKey)}>
                 {paletteOptions.map((k) => (
                   <option key={k} value={k}>
@@ -66,9 +79,9 @@ export function ComparisonModal({
                 ))}
               </select>
               <div className="space-y-2">
-                <div className="text-[10px] uppercase tracking-widest text-[var(--text-muted)]">Light</div>
+                <div className="type-caption font-medium uppercase tracking-wider">Light</div>
                 <PalettePreview paletteKey={key} mode="light" />
-                <div className="text-[10px] uppercase tracking-widest text-[var(--text-muted)]">Dark</div>
+                <div className="type-caption font-medium uppercase tracking-wider">Dark</div>
                 <PalettePreview paletteKey={key} mode="dark" />
               </div>
               <button onClick={() => onApply(key)} className={`btn ${btnClass} w-full text-sm`}>
@@ -78,8 +91,9 @@ export function ComparisonModal({
           ))}
         </div>
 
-        <div className="text-center text-xs text-[var(--text-muted)] border-t border-[var(--border)] pt-4">
-          Curated benchmark scores • {palettes[compareA].researchNote.substring(0, 60)}...
+        <div className="text-xs text-[var(--text-muted)] border-t border-[var(--border)] pt-4 space-y-2">
+          <p className="font-medium text-[var(--text)]">{palettes[compareA].name}</p>
+          <p className="leading-relaxed">{palettes[compareA].researchNote}</p>
         </div>
       </motion.div>
     </div>

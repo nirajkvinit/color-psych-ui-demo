@@ -135,7 +135,7 @@ export function StudyMode({ shortlist, onApply }: StudyModeProps) {
             className="text-left rounded-xl border border-[var(--border)] hover:border-[var(--accent)] p-3 transition-all group"
           >
             <PalettePreview paletteKey={key} mode="light" />
-            <div className="mt-2 flex items-center gap-1 text-xs font-medium accent-text opacity-0 group-hover:opacity-100 transition-opacity">
+            <div className="mt-2 flex items-center gap-1 text-xs font-medium accent-text opacity-70 md:opacity-0 md:group-hover:opacity-100 transition-opacity touch-hint">
               Choose {palettes[key].name.split(' ')[0]} <ChevronRight className="w-3 h-3" />
             </div>
           </button>

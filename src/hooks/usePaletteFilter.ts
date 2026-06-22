@@ -29,6 +29,7 @@ export function usePaletteFilter(allKeys: PaletteKey[]) {
         return (
           p.name.toLowerCase().includes(q) ||
           p.psych.toLowerCase().includes(q) ||
+          p.researchNote.toLowerCase().includes(q) ||
           k.toLowerCase().includes(q)
         );
       });

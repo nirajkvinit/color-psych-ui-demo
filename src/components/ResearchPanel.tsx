@@ -2,9 +2,9 @@ import { ShieldCheck, Leaf, Zap, Award } from 'lucide-react';
 
 export function ResearchPanel() {
   return (
-    <div className="card h-full p-7 psych-panel">
-      <div className="uppercase tracking-[2px] text-xs mb-4 flex items-center gap-2">
-        <ShieldCheck className="w-4 h-4" /> GROUNDED RESEARCH
+    <div className="card p-7 psych-panel">
+      <div className="type-eyebrow mb-4 flex items-center gap-2">
+        <ShieldCheck className="w-4 h-4" /> Grounded research
       </div>
       <h3 className="font-semibold text-2xl tracking-tight mb-6">Why These Colors Work</h3>
 
@@ -35,7 +35,7 @@ export function ResearchPanel() {
         </div>
       </div>
 
-      <div className="mt-auto pt-6 border-t border-[var(--border)] text-[10px] text-[var(--text-muted)]">
+      <div className="mt-6 pt-6 border-t border-[var(--border)] type-caption">
         Sources: Smashing Magazine Color Psych 2025 • WithLoveInternet UX Guide 2026 • Adobe Brand Color Report.
       </div>
     </div>

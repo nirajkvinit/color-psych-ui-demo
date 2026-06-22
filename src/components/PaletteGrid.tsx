@@ -36,7 +36,7 @@ export function PaletteGrid({
           )}
         </div>
       )}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
         {keys.map((key) => {
           const pal = palettes[key];
           const isActive = key === currentKey;
@@ -57,12 +57,12 @@ export function PaletteGrid({
                   <div className="font-semibold text-lg tracking-tight flex-1">{pal.name}</div>
                 </div>
                 <p className="text-xs text-[var(--text-muted)] line-clamp-3 leading-snug">{pal.psych}</p>
-                <div className="mt-2 flex gap-2 text-[10px] font-mono text-[var(--text-muted)]">
+                <div className="mt-2 flex gap-2 type-caption font-mono">
                   <span>Calm {PALETTE_SCORES[key].calmness}</span>
                   <span>Premium {PALETTE_SCORES[key].premium}</span>
                 </div>
                 {isActive && (
-                  <div className="mt-3 text-[10px] font-mono accent-text">CURRENTLY ACTIVE • LIVE PREVIEW</div>
+                  <div className="mt-3 type-caption font-mono accent-text">CURRENTLY ACTIVE • LIVE PREVIEW</div>
                 )}
               </button>
               <button
@@ -73,7 +73,7 @@ export function PaletteGrid({
                 className={`absolute top-3 right-3 p-1.5 rounded-lg transition-colors ${
                   shortlisted
                     ? 'accent-bg text-[var(--accent-foreground)]'
-                    : 'bg-[var(--surface)] border border-[var(--border)] opacity-0 group-hover/card:opacity-100 text-[var(--text-muted)]'
+                    : 'bg-[var(--surface)] border border-[var(--border)] opacity-70 md:opacity-0 md:group-hover/card:opacity-100 text-[var(--text-muted)]'
                 }`}
                 aria-label={shortlisted ? `Remove ${pal.name} from shortlist` : `Shortlist ${pal.name}`}
                 title={shortlisted ? 'Remove from shortlist' : 'Add to shortlist (max 5)'}

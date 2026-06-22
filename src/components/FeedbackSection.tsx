@@ -21,10 +21,10 @@ export function FeedbackSection({
   onExportCsv,
 }: FeedbackSectionProps) {
   return (
-    <div className="card p-8 h-full">
+    <div className="card p-8">
       <h3 className="font-semibold text-2xl tracking-tight mb-2">Your Testing Impact</h3>
       <p className="text-[var(--text-muted)] mb-6">
-        Contribute real perception data. Your ratings are stored locally and can be exported as CSV.
+        Contribute perception data for the active palette. Ratings are stored locally and exportable as CSV.
       </p>
 
       {paletteRatingCount > 0 ? (
@@ -53,7 +53,7 @@ export function FeedbackSection({
           <Star className="mx-auto w-8 h-8 mb-3 opacity-40" />
           <p className="font-medium">No ratings yet for this palette.</p>
           <p className="text-sm text-[var(--text-muted)] mt-1">
-            Use &quot;Rate This Palette&quot; in the Color Lab to contribute your perception data.
+            Use &quot;Rate This Palette&quot; in the Color Lab or the button below to contribute data.
           </p>
         </div>
       )}

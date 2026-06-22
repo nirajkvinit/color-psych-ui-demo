@@ -52,9 +52,9 @@ export function BenchmarkChart({ currentKey, onSelectPalette }: BenchmarkChartPr
     <div>
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
         <div>
-          <h2 className="text-3xl font-semibold tracking-tight">Perceived Impact by Palette</h2>
+          <h2 className="type-heading">Perceived Impact by Palette</h2>
           <p className="text-[var(--text-muted)] text-sm">
-            Curated benchmark scores — click a point to preview. Not from live user sessions.
+            Click a point or bar to preview that palette in the live theme.
           </p>
         </div>
         <div className="flex gap-2">
@@ -181,8 +181,8 @@ export function BenchmarkChart({ currentKey, onSelectPalette }: BenchmarkChartPr
             ))}
           </div>
         )}
-        <p className="text-center text-xs text-[var(--text-muted)] mt-4">
-          Higher scores indicate stronger positive psychological response in corporate contexts.
+        <p className="text-center type-caption mt-4">
+          Higher calmness and premium scores indicate stronger positive response in corporate contexts.
         </p>
       </div>
     </div>

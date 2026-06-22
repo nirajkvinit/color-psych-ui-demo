@@ -22,6 +22,7 @@ import { usePaletteFilter } from './hooks/usePaletteFilter';
 import { exportTheme } from './utils/exportTheme';
 
 import { Header } from './components/Header';
+import { SectionNav } from './components/SectionNav';
 import { PaletteNavigator } from './components/PaletteNavigator';
 import { PaletteGrid } from './components/PaletteGrid';
 import { ColorLab } from './components/ColorLab';
@@ -94,12 +95,22 @@ const App: React.FC = () => {
     });
   };
 
-  const randomCombination = () => {
+  const randomPalette = () => {
     const keys = paletteKeys.filter((k) => k !== currentPaletteKey);
     const randomKey = keys[Math.floor(Math.random() * keys.length)] ?? 'calm';
     setCurrentPaletteKey(randomKey);
-    setIsDark(Math.random() > 0.5);
-    toast.success(`Random: ${palettes[randomKey].name}`);
+    toast.success(`Random palette: ${palettes[randomKey].name}`);
+  };
+
+  const surpriseMe = () => {
+    const keys = paletteKeys.filter((k) => k !== currentPaletteKey);
+    const randomKey = keys[Math.floor(Math.random() * keys.length)] ?? 'calm';
+    const nextDark = Math.random() > 0.5;
+    setCurrentPaletteKey(randomKey);
+    setIsDark(nextDark);
+    toast.success(`Surprise: ${palettes[randomKey].name}`, {
+      description: nextDark ? 'Dark mode' : 'Light mode',
+    });
   };
 
   const openComparison = () => {
@@ -158,6 +169,10 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] selection:bg-[var(--accent)] selection:text-[var(--accent-foreground)]">
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
+
       <Header
         currentKey={currentPaletteKey}
         onSelectPalette={switchPalette}
@@ -165,17 +180,22 @@ const App: React.FC = () => {
         onToggleTheme={handleToggleTheme}
         onExport={handleExport}
         quickNavKeys={quickNavKeys}
+        allPaletteKeys={paletteKeys}
       />
+      <SectionNav />
 
-      <div className="max-w-7xl mx-auto px-6 pt-10 pb-24">
+      <main id="main" className="max-w-7xl mx-auto px-6 pt-10 pb-24">
         <div className="max-w-3xl mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[var(--surface-2)] text-xs font-medium tracking-[1.5px] mb-4">
-            PREMIUM STUDIO • RESEARCH-BACKED
+          <div className="flex flex-wrap items-center gap-3 mb-4">
+            <div className="type-eyebrow px-4 py-1 rounded-full bg-[var(--surface-2)]">
+              Premium studio • Research-backed
+            </div>
+            <span className="demo-badge">Demo data — curated benchmarks</span>
           </div>
-          <h1 className="text-6xl md:text-7xl font-semibold tracking-[-3.5px] leading-[0.95] mb-6">
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-semibold tracking-tight lg:tracking-[-3.5px] leading-[0.95] mb-6">
             Test Color Psychology.<br />Craft Premium Calm.
           </h1>
-          <p className="text-xl text-[var(--text-muted)] max-w-lg">
+          <p className="text-lg sm:text-xl text-[var(--text-muted)] max-w-lg">
             A live React demo exploring 34 modern & historical corporate calm & warmth palettes, dark/light modes, and
             studio-quality micro-interactions. Built to validate emotional impact through real interaction.
           </p>
@@ -187,30 +207,44 @@ const App: React.FC = () => {
               Enter the Color Lab
             </button>
             <button
-              onClick={() => document.getElementById('insights')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.getElementById('palettes')?.scrollIntoView({ behavior: 'smooth' })}
               className="btn btn-secondary px-8 py-3.5 text-base"
             >
-              View Benchmark Scores
+              Browse All Palettes
             </button>
           </div>
-          <p className="text-xs text-[var(--text-muted)] mt-4">
-            Data synthesized from 2025–2026 studies on color psych, UX trends, and visual ergonomics.
+          <p className="type-caption mt-4">
+            Synthesized from 2025–2026 studies on color psych, UX trends, and visual ergonomics.
           </p>
         </div>
 
-        <div className="mb-12 space-y-6">
+        <div id="lab" className="mb-16 scroll-mt-sticky">
+          <div className="card glass p-8 md:p-10">
+            <ColorLab
+              currentPaletteKey={currentPaletteKey}
+              contextPreset={contextPreset}
+              onContextChange={setContextPreset}
+              onOpenFeedback={() => setShowFeedbackModal(true)}
+            />
+          </div>
+        </div>
+
+        <div className="mb-12 space-y-6 scroll-mt-sticky" id="palettes">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
-              <div className="uppercase text-xs tracking-[3px] text-[var(--text-muted)]">CHOOSE YOUR ACCENT</div>
-              <h2 className="text-3xl font-semibold tracking-tight">Corporate Color Palettes</h2>
-              <p className="text-xs text-[var(--text-muted)] mt-1">
+              <div className="type-eyebrow">Choose your accent</div>
+              <h2 className="type-heading">Corporate Color Palettes</h2>
+              <p className="type-caption mt-1">
                 {paletteKeys.length} palettes — {MODERN_CALM_PALETTES.length + MODERN_WARM_PALETTES.length} modern +{' '}
                 {HISTORICAL_CALM_PALETTES.length + HISTORICAL_WARM_PALETTES.length} historical
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
-              <button onClick={randomCombination} className="btn btn-secondary text-xs flex items-center gap-1.5">
-                <Shuffle className="w-3.5 h-3.5" /> Random
+              <button onClick={randomPalette} className="btn btn-secondary text-xs flex items-center gap-1.5">
+                <Shuffle className="w-3.5 h-3.5" /> Random palette
+              </button>
+              <button onClick={surpriseMe} className="btn btn-secondary text-xs flex items-center gap-1.5">
+                <Shuffle className="w-3.5 h-3.5" /> Surprise me
               </button>
               <button onClick={openComparison} className="btn btn-secondary text-xs flex items-center gap-1.5">
                 <Columns2 className="w-3.5 h-3.5" /> Compare
@@ -243,7 +277,7 @@ const App: React.FC = () => {
             shortlistCount={shortlist.length}
           />
 
-          <div className="space-y-10 scroll-mt-24" id="palettes">
+          <div className="space-y-10">
             {showGrouped ? (
               CATEGORY_GROUPS.map(({ category, badge }) => {
                 const keys = filteredByGroup(category);
@@ -276,7 +310,7 @@ const App: React.FC = () => {
           </div>
         </div>
 
-        <div id="insights" className="mb-16 scroll-mt-24">
+        <div id="insights" className="mb-16 scroll-mt-sticky">
           <BenchmarkMetrics
             currentKey={currentPaletteKey}
             userCalmAvg={userAvg.calmness}
@@ -285,18 +319,7 @@ const App: React.FC = () => {
           />
         </div>
 
-        <div id="lab" className="mb-16 scroll-mt-24">
-          <div className="card glass p-8 md:p-10">
-            <ColorLab
-              currentPaletteKey={currentPaletteKey}
-              contextPreset={contextPreset}
-              onContextChange={setContextPreset}
-              onOpenFeedback={() => setShowFeedbackModal(true)}
-            />
-          </div>
-        </div>
-
-        <div className="mb-16">
+        <div id="chart" className="mb-16 scroll-mt-sticky">
           <Suspense
             fallback={
               <div className="card p-12 text-center text-[var(--text-muted)]">Loading chart…</div>
@@ -314,12 +337,18 @@ const App: React.FC = () => {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-6 mb-16">
-          <div className="lg:col-span-4 space-y-6">
-            <ResearchPanel />
-            <AccessibilityPanel currentKey={currentPaletteKey} isDark={isDark} />
+        <div id="accessibility" className="mb-16 scroll-mt-sticky max-w-3xl">
+          <AccessibilityPanel currentKey={currentPaletteKey} isDark={isDark} />
+        </div>
+
+        <div id="contribute" className="space-y-6 mb-16 scroll-mt-sticky">
+          <div>
+            <h2 className="type-heading mb-1">Contribute & learn</h2>
+            <p className="text-sm text-[var(--text-muted)]">
+              Rate palettes, run preference studies, and explore the research behind each color choice.
+            </p>
           </div>
-          <div className="lg:col-span-8 space-y-6">
+          <div className="grid lg:grid-cols-2 gap-6 items-start">
             <FeedbackSection
               palette={currentPalette}
               avgCalm={userAvg.calmness}
@@ -331,16 +360,51 @@ const App: React.FC = () => {
             />
             <StudyMode shortlist={shortlist} onApply={switchPalette} />
           </div>
+          <ResearchPanel />
         </div>
-      </div>
+      </main>
 
-      <footer className="border-t border-[var(--border)] py-8 text-xs text-[var(--text-muted)]">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between gap-y-3 items-center">
-          <div>© Aether Lab 2026 — Research-grade demo for corporate color psychology testing.</div>
-          <div className="flex flex-wrap gap-5 justify-center">
-            <span>WCAG AA audited palettes</span>
-            <span>34 palettes • 4 context presets</span>
-            <span>React 19 + Tailwind + Framer Motion</span>
+      <footer className="relative z-10 border-t border-[var(--border)] bg-[var(--bg)] py-8 text-xs text-[var(--text-muted)]">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col gap-4">
+          <div className="flex flex-col md:flex-row justify-between gap-y-3 items-center">
+            <div>© Aether Lab 2026 — Research-grade demo for corporate color psychology testing.</div>
+            <div className="flex flex-wrap gap-5 justify-center">
+              <span>WCAG AA audited palettes</span>
+              <span>34 palettes • 4 context presets</span>
+              <span>React 19 + Tailwind + Framer Motion</span>
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-4 justify-center md:justify-start border-t border-[var(--border)] pt-4">
+            <a
+              href="#accessibility"
+              className="hover:text-[var(--text)] transition-colors underline-offset-2 hover:underline"
+            >
+              Contrast audit
+            </a>
+            {userRatings.length > 0 ? (
+              <button
+                type="button"
+                onClick={handleExportCsv}
+                className="hover:text-[var(--text)] transition-colors underline-offset-2 hover:underline"
+              >
+                Export ratings CSV
+              </button>
+            ) : (
+              <a
+                href="#contribute"
+                className="hover:text-[var(--text)] transition-colors underline-offset-2 hover:underline"
+              >
+                Contribute ratings
+              </a>
+            )}
+            <a
+              href="https://github.com/nirajkvinit/color-psych-ui-demo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[var(--text)] transition-colors underline-offset-2 hover:underline"
+            >
+              View source
+            </a>
           </div>
         </div>
       </footer>

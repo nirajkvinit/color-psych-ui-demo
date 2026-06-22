@@ -1,6 +1,8 @@
+import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import type { PaletteDefinition } from '../types';
 import { useEscapeKey } from '../hooks/useEscapeKey';
+import { useFocusTrap } from '../hooks/useFocusTrap';
 
 interface FeedbackModalProps {
   palette: PaletteDefinition;
@@ -21,7 +23,10 @@ export function FeedbackModal({
   onSubmit,
   onClose,
 }: FeedbackModalProps) {
+  const panelRef = useRef<HTMLDivElement>(null);
   useEscapeKey(onClose);
+  useFocusTrap(panelRef);
+
   return (
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-6"
@@ -31,6 +36,7 @@ export function FeedbackModal({
       aria-labelledby="feedback-title"
     >
       <motion.div
+        ref={panelRef}
         initial={{ opacity: 0, y: 20, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 20, scale: 0.98 }}
@@ -45,7 +51,11 @@ export function FeedbackModal({
             </div>
             <p className="text-sm text-[var(--text-muted)]">Help us understand the emotional impact</p>
           </div>
-          <button onClick={onClose} className="text-[var(--text-muted)] hover:text-[var(--text)]" aria-label="Close">
+          <button
+            onClick={onClose}
+            className="btn btn-ghost p-2 rounded-xl text-xl leading-none min-w-[2.5rem]"
+            aria-label="Close"
+          >
             ×
           </button>
         </div>
@@ -65,7 +75,7 @@ export function FeedbackModal({
               onChange={(e) => onCalmnessChange(parseFloat(e.target.value))}
               className="w-full accent-[var(--accent)]"
             />
-            <div className="flex justify-between text-[10px] text-[var(--text-muted)] mt-1">
+            <div className="flex justify-between type-caption mt-1">
               <div>Low Trust / Anxious</div>
               <div>Deeply Calm & Reliable</div>
             </div>
@@ -85,7 +95,7 @@ export function FeedbackModal({
               onChange={(e) => onPremiumChange(parseFloat(e.target.value))}
               className="w-full accent-[var(--accent)]"
             />
-            <div className="flex justify-between text-[10px] text-[var(--text-muted)] mt-1">
+            <div className="flex justify-between type-caption mt-1">
               <div>Basic / Generic</div>
               <div>Luxurious Studio Craft</div>
             </div>
@@ -100,8 +110,8 @@ export function FeedbackModal({
             Submit My Ratings
           </button>
         </div>
-        <p className="text-center text-[10px] text-[var(--text-muted)] mt-4">
-          Stored locally in your browser. Export via the feedback panel.
+        <p className="text-center type-caption mt-4">
+          Stored locally in your browser. Export via the Contribute section.
         </p>
       </motion.div>
     </div>
