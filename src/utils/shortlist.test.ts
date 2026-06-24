@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+import { paletteKeys } from '../data';
 import { MAX_SHORTLIST, sanitizeShortlist } from './shortlist';
 
 describe('sanitizeShortlist', () => {
@@ -30,11 +31,11 @@ describe('sanitizeShortlist', () => {
   });
 
   it(`caps the result at MAX_SHORTLIST (${MAX_SHORTLIST})`, () => {
-    const many = [
-      'calm', 'navy', 'verdant', 'slate', 'honey', 'warm', 'cloud',
-      'charcoal', 'terracotta', 'lumina', 'twilight', 'oatmeal', 'sagebrush', 'arctic', 'copper', 'apricot',
-    ];
+    // Derive the input from the real palette list so this test stays valid
+    // whatever MAX_SHORTLIST is set to (as long as enough palettes exist).
+    expect(paletteKeys.length).toBeGreaterThan(MAX_SHORTLIST);
+    const many = [...paletteKeys];
     expect(sanitizeShortlist(many)).toHaveLength(MAX_SHORTLIST);
-    expect(sanitizeShortlist(many)[MAX_SHORTLIST - 1]).toBe('copper');
+    expect(sanitizeShortlist(many)).toEqual(many.slice(0, MAX_SHORTLIST));
   });
 });

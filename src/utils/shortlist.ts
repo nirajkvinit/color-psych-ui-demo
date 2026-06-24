@@ -1,7 +1,7 @@
 import type { PaletteKey } from '../types';
 import { palettes } from '../data';
 
-export const MAX_SHORTLIST = 15;
+export const MAX_SHORTLIST = 25;
 
 /**
  * Drop unknown/duplicate keys and cap length so corrupt or legacy persisted data
