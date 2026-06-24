@@ -69,17 +69,14 @@ const App: React.FC = () => {
   const [premiumRating, setPremiumRating] = useState(8);
 
   const switchPalette = useCallback(
-    (key: PaletteKey, silent = false) => {
+    (key: PaletteKey) => {
       if (key === currentPaletteKey) return;
       setCurrentPaletteKey(key);
-      if (!silent) {
-        document.getElementById('lab')?.scrollIntoView({ behavior: 'smooth' });
-      }
     },
     [currentPaletteKey, setCurrentPaletteKey],
   );
 
-  useKeyboardPaletteNav(currentPaletteKey, (key) => switchPalette(key, true));
+  useKeyboardPaletteNav(currentPaletteKey, switchPalette);
 
   const quickNavKeys = useMemo(
     () => (shortlist.length > 0 ? shortlist : TOP_RATED_PALETTES.slice(0, 6)),
