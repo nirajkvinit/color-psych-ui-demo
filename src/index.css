@@ -396,11 +396,17 @@ html.liquid-glass .search-input {
   box-shadow: 0 1px 0 var(--lg-specular) inset;
 }
 
-/* Unified sticky chrome — single glass layer (no seam between header + nav) */
+/* Unified sticky chrome — single glass layer (no seam between header + nav).
+   Opacity is based on --surface DIRECTLY (not the floating --lg-fill token,
+   which is itself ~55% translucent): content scrolls *behind* a sticky header,
+   so the fill must occlude text. Mixing the already-translucent --lg-fill again
+   collapsed the effective alpha to ~51% and let scrolled-up sections bleed
+   through. 82% surface keeps the frosted look (blur + saturate) while staying
+   legible across every palette. */
 html.liquid-glass .chrome-shell {
   border-radius: 0;
   overflow: hidden;
-  background: color-mix(in srgb, var(--lg-fill) 88%, transparent);
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
   backdrop-filter: blur(32px) saturate(1.7) brightness(var(--lg-brightness));
   -webkit-backdrop-filter: blur(32px) saturate(1.7) brightness(var(--lg-brightness));
 }
