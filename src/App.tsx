@@ -417,7 +417,7 @@ const App: React.FC = () => {
               </a>
             )}
             <a
-              href="https://github.com/nirajkvinit/color-psych-ui-demo"
+              href="https://github.com/Aman-CERP/color-psych-ui-demo"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-[var(--text)] transition-colors underline-offset-2 hover:underline"
