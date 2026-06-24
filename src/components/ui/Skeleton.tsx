@@ -1,11 +1,9 @@
-import type { CSSProperties } from 'react';
+import type { ComponentPropsWithRef } from 'react';
 
-export interface SkeletonProps {
+export interface SkeletonProps extends ComponentPropsWithRef<'span'> {
   width?: number | string;
   height?: number | string;
   radius?: number | string;
-  className?: string;
-  style?: CSSProperties;
 }
 
 /**
@@ -19,9 +17,11 @@ export function Skeleton({
   radius = '0.5rem',
   className = '',
   style,
+  ...rest
 }: SkeletonProps) {
   return (
     <span
+      {...rest}
       className={`skeleton ${className}`.trim()}
       aria-hidden
       style={{ display: 'block', width, height, borderRadius: radius, ...style }}

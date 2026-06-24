@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ComponentPropsWithRef } from 'react';
 import {
   X,
   Info,
@@ -20,11 +20,9 @@ const TONE_ICON: Record<Tone, LucideIcon> = {
   accent: Sparkles,
 };
 
-export interface AlertProps {
+export interface AlertProps extends Omit<ComponentPropsWithRef<'div'>, 'title'> {
   tone?: Tone;
   title: string;
-  /** Short message — keep to 1–2 sentences (USWDS / Carbon guidance). */
-  children?: ReactNode;
   variant?: 'soft' | 'prominent';
   /** Override the default tone icon, or pass `null` to hide it. */
   icon?: LucideIcon | null;
@@ -32,11 +30,16 @@ export interface AlertProps {
   action?: { label: string; onClick: () => void };
   onDismiss?: () => void;
   /**
-   * Announce assertively (role="alert", interrupts the screen reader). Defaults
-   * to true only for `danger` — research says reserve assertive for genuinely
-   * urgent messages and let everything else announce politely (role="status").
+   * Force assertive announcement (role="alert"). Defaults to true only for
+   * `danger` — reserve assertive interruptions for genuinely urgent messages.
    */
   assertive?: boolean;
+  /**
+   * Announce politely (role="status") when the alert is inserted dynamically.
+   * Static, always-rendered alerts should stay opt-out (the default) so they
+   * don't register as live regions for no reason.
+   */
+  live?: boolean;
 }
 
 export function Alert({
@@ -48,15 +51,21 @@ export function Alert({
   action,
   onDismiss,
   assertive,
+  live,
+  className,
+  ...rest
 }: AlertProps) {
   const Icon = icon === null ? null : (icon ?? TONE_ICON[tone]);
   const isAssertive = assertive ?? tone === 'danger';
+  const role = isAssertive ? 'alert' : live ? 'status' : undefined;
+  const ariaLive = isAssertive ? 'assertive' : live ? 'polite' : undefined;
 
   return (
     <div
-      className={`alert tone-${tone}${variant === 'prominent' ? ' alert--prominent' : ''}`}
-      role={isAssertive ? 'alert' : 'status'}
-      aria-live={isAssertive ? 'assertive' : 'polite'}
+      {...rest}
+      className={`alert tone-${tone}${variant === 'prominent' ? ' alert--prominent' : ''}${className ? ` ${className}` : ''}`}
+      role={role}
+      aria-live={ariaLive}
     >
       {Icon && <Icon className="alert-icon" size={18} aria-hidden />}
       <div className="alert-content">

@@ -71,9 +71,80 @@ for (const [key, palette] of Object.entries(palettes)) {
   }
 }
 
+// ── Semantic feedback tokens (global, defined in src/index.css) ──────────────
+// Invariant: semantic tone *text* (alert icon/action, badge label, inline
+// validation) is ALWAYS rendered on the tone's own muted ground — never on the
+// ambient palette surface — because a single global colour can't clear 4.5:1 on
+// 34 arbitrary surfaces. So we audit exactly that contract: each tone's solid
+// (>= 4.5:1, used as text) and the palette --text (alert title/body) on the
+// tone's muted fill, for every palette × mode. Muted grounds are palette-
+// independent hex, so tone-on-muted is constant; --text-on-muted varies per
+// palette and is the one that must be checked per palette.
+const css = readFileSync(join(root, 'src/index.css'), 'utf8');
+
+function cssBlock(sel) {
+  const m = css.match(new RegExp('(?:^|\\n)' + sel + '\\s*\\{([\\s\\S]*?)\\}'));
+  return m ? m[1] : '';
+}
+function cssVar(blockStr, name) {
+  const m = blockStr.match(new RegExp('--' + name + '\\s*:\\s*([^;]+);'));
+  return m ? m[1].trim() : null;
+}
+function toRgb(value, baseHex) {
+  // hex → rgb; rgba/rgb → rgb composited over baseHex when translucent.
+  if (value.startsWith('#')) return hexToRgb(value);
+  const m = value.match(/rgba?\(([^)]+)\)/);
+  if (!m) return null;
+  const [r, g, b, a = 1] = m[1].split(',').map((s) => parseFloat(s.trim()));
+  const base = hexToRgb(baseHex);
+  return [r * a + base[0] * (1 - a), g * a + base[1] * (1 - a), b * a + base[2] * (1 - a)];
+}
+function lumRgb([r, g, b]) {
+  const c = [r, g, b].map((v) => {
+    const s = v / 255;
+    return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+  });
+  return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+}
+function ratioRgb(fg, bg) {
+  const l1 = lumRgb(fg);
+  const l2 = lumRgb(bg);
+  return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+}
+
+const SEMANTIC_TONES = ['info', 'success', 'warning', 'danger'];
+const cssByMode = { light: cssBlock(':root'), dark: cssBlock('\\.dark') };
+let semanticChecks = 0;
+
+for (const [key, palette] of Object.entries(palettes)) {
+  for (const mode of ['light', 'dark']) {
+    const vars = palette[mode];
+    const blk = cssByMode[mode];
+    for (const tone of SEMANTIC_TONES) {
+      const solidHex = cssVar(blk, tone);
+      const mutedRaw = cssVar(blk, `${tone}-muted`);
+      if (!solidHex || !mutedRaw) continue;
+      const solid = hexToRgb(solidHex);
+      const muted = toRgb(mutedRaw, vars['--surface']);
+      if (muted) {
+        semanticChecks++;
+        const rSolid = ratioRgb(solid, muted);
+        if (rSolid < 4.5) failures.push({ key, mode, pair: `${tone} on ${tone}-muted`, foreground: solidHex, background: mutedRaw, ratio: rSolid.toFixed(2), minRatio: 4.5 });
+        if (vars['--text']) {
+          semanticChecks++;
+          const rText = ratioRgb(hexToRgb(vars['--text']), muted);
+          if (rText < 4.5) failures.push({ key, mode, pair: `text on ${tone}-muted`, foreground: vars['--text'], background: mutedRaw, ratio: rText.toFixed(2), minRatio: 4.5 });
+        }
+      }
+    }
+  }
+}
+
 if (failures.length === 0) {
   const total = Object.keys(palettes).length * 2 * TOKEN_PAIRS.length;
-  console.log(`✓ All ${Object.keys(palettes).length} palettes pass WCAG AA (${total} checks)`);
+  console.log(
+    `✓ All ${Object.keys(palettes).length} palettes pass WCAG AA (${total} palette + ${semanticChecks} semantic-token checks)`,
+  );
   process.exit(0);
 }
 

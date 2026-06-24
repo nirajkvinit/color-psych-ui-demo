@@ -36,6 +36,22 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export function ComponentGallery() {
   // ── Dismissible alert (with restore) ──────────────────────────────────────
   const [showDismissible, setShowDismissible] = useState(true);
+  const restoreRef = useRef<HTMLButtonElement>(null);
+  const justDismissed = useRef(false);
+
+  const dismissAlert = () => {
+    justDismissed.current = true;
+    setShowDismissible(false);
+  };
+
+  // After the dismissed alert unmounts, move focus to the restore control so
+  // keyboard focus is never dropped to <body>.
+  useEffect(() => {
+    if (!showDismissible && justDismissed.current) {
+      restoreRef.current?.focus();
+      justDismissed.current = false;
+    }
+  }, [showDismissible]);
 
   // ── Inline validation ─────────────────────────────────────────────────────
   const [email, setEmail] = useState('');
@@ -45,6 +61,8 @@ export function ComponentGallery() {
   const valid = EMAIL_RE.test(email);
   const showError = touched && email.length > 0 && !valid;
   const showSuccess = touched && valid;
+  // A blank submit must flag the field too — not only non-empty bad input.
+  const fieldInvalid = showError || submitError;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -134,7 +152,7 @@ export function ComponentGallery() {
           </p>
         </div>
         <Tooltip label="These are interactive demos — click the toast and validation controls to feel the micro-interactions.">
-          <span className="demo-badge cursor-help">
+          <span className="demo-badge cursor-help" tabIndex={0}>
             <HelpCircle className="w-3.5 h-3.5" aria-hidden /> Interactive demo
           </span>
         </Tooltip>
@@ -176,17 +194,14 @@ export function ComponentGallery() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, height: 0, marginTop: 0, transition: { duration: 0.2 } }}
               >
-                <Alert
-                  tone="neutral"
-                  title="Dismissible notice"
-                  onDismiss={() => setShowDismissible(false)}
-                >
+                <Alert tone="neutral" title="Dismissible notice" onDismiss={dismissAlert}>
                   Dismissible alerts never auto-close on a timer — the user stays in control.
                 </Alert>
               </motion.div>
             ) : (
               <motion.button
                 key="restore"
+                ref={restoreRef}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 type="button"
@@ -243,7 +258,7 @@ export function ComponentGallery() {
             </div>
             <div className="flex flex-wrap gap-2">
               {SEMANTIC_TONES.map((t) => (
-                <Badge key={t} tone={t} variant="outline">
+                <Badge key={t} tone={t} variant="outline" dot>
                   {t}
                 </Badge>
               ))}
@@ -284,7 +299,7 @@ export function ComponentGallery() {
                 className="input"
                 placeholder="you@studio.com"
                 value={email}
-                aria-invalid={showError}
+                aria-invalid={fieldInvalid}
                 aria-describedby="gallery-email-help"
                 onChange={(e) => {
                   setEmail(e.target.value);
@@ -292,26 +307,31 @@ export function ComponentGallery() {
                 }}
                 onBlur={() => setTouched(true)}
                 style={
-                  showError
+                  fieldInvalid
                     ? { borderColor: 'var(--danger)' }
                     : showSuccess
                       ? { borderColor: 'var(--success)' }
                       : undefined
                 }
               />
-              <p
-                id="gallery-email-help"
-                className="type-caption mt-1.5 flex items-center gap-1"
-                style={{ color: showError ? 'var(--danger)' : showSuccess ? 'var(--success)' : undefined }}
-              >
-                {showError ? (
-                  <><CircleAlert className="w-3.5 h-3.5" aria-hidden /> That doesn’t look like a valid email.</>
+              {/* Status sits in a tone chip (its own ground) — tone-coloured text
+                  on the bare card surface can't be guaranteed AA across palettes. */}
+              <div id="gallery-email-help" className="mt-1.5">
+                {fieldInvalid ? (
+                  <span className="badge badge--soft tone-danger" style={{ whiteSpace: 'normal' }}>
+                    <CircleAlert size={13} aria-hidden />
+                    {email.length === 0 ? 'Enter your email address.' : 'That doesn’t look like a valid email.'}
+                  </span>
                 ) : showSuccess ? (
-                  <><Check className="w-3.5 h-3.5" aria-hidden /> Looks good.</>
+                  <span className="badge badge--soft tone-success">
+                    <Check size={13} aria-hidden /> Looks good.
+                  </span>
                 ) : (
-                  'We’ll only use this for design-system updates.'
+                  <span className="type-caption text-[var(--text-muted)]">
+                    We’ll only use this for design-system updates.
+                  </span>
                 )}
-              </p>
+              </div>
             </div>
             <button type="submit" className="btn btn-primary text-sm flex items-center gap-1.5">
               <Mail className="w-4 h-4" /> Subscribe
@@ -323,6 +343,7 @@ export function ComponentGallery() {
         <Demo title="Empty state" hint="No-data pattern with a single recovery action.">
           <EmptyState
             icon={Inbox}
+            titleAs="h4"
             title="No shortlisted palettes yet"
             description="Star palettes you like and they’ll collect here for side-by-side comparison."
             action={
